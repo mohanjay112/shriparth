@@ -1,0 +1,518 @@
+/* ============================================================
+   SHRIPARTH PORTFOLIO — mobile-fix.css
+   Add this <link> AFTER style.css in your HTML:
+   <link rel="stylesheet" href="mobile-fix.css">
+   ============================================================ */
+
+/* ── Hero Section Responsive ── */
+@media (max-width: 992px) {
+    .hero-content { padding: 0 2rem; }
+    .monitor-body { padding: 3rem 2.5rem 3rem; }
+    .hero-h1 { font-size: clamp(3.5rem, 6vw, 5rem); letter-spacing: 0px; }
+    .monitor-bottom { padding: 1.5rem 2.5rem; }
+    .monitor-top { padding: 1.25rem 2.5rem; }
+}
+
+@media (max-width: 768px) {
+    .hero-wrap { padding: 6rem 0 4rem; }
+    .hero-content { padding: 0 1rem; }
+    .monitor-body { padding: 2.5rem 1.5rem 2.5rem; }
+    .hero-h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); letter-spacing: 0px; margin-bottom: 1.5rem; }
+    .hero-tagline { font-size: 0.7rem; letter-spacing: 2px; }
+    .tagline-box { padding: 0.5rem 1rem; margin-bottom: 2rem; }
+    .hero-btns { gap: 1.5rem; margin-top: 1rem; flex-direction: column; width: 100%; }
+    .btn-hero-explore, .btn-hero-start { text-align: center; width: 100%; padding: 1.25rem 2rem; }
+    .monitor-top-right, .playback, .audio-vis { display: none; }
+    .monitor-bottom { padding: 1.5rem; justify-content: center; }
+    .monitor-top { padding: 1rem 1.5rem; }
+}
+
+/* ── Footer heading: prevent ::before ghost on mobile ── */
+@media (max-width: 768px) {
+    .footer-h {
+        font-size: 1.9rem;
+        line-height: 1.05;
+        letter-spacing: -0.5px;
+        /* Reset any clip-path GSAP may apply */
+        clip-path: none !important;
+    }
+
+    /* Hide the decorative shadow-text ::before on mobile — 
+       it stacks visibly when font-size is small */
+    .footer-h::before {
+        display: none;
+    }
+
+    /* ── Social tiles: compact on mobile ── */
+    .social-row {
+        grid-template-columns: 1fr !important;
+        border-radius: 0;
+    }
+
+    .social-tile {
+        min-height: 70px !important;
+        padding: 1rem 1.25rem !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-between;
+        border-right: none !important;
+        border-bottom: 2px solid var(--ink) !important;
+    }
+
+    .social-tile:last-child {
+        border-bottom: none !important;
+    }
+
+    .st-abbr {
+        font-size: 0.65rem;
+        opacity: 0.45;
+    }
+
+    .st-name {
+        font-size: 1.3rem !important;
+    }
+
+    /* Arrow indicator on social tiles */
+    .social-tile::after {
+        content: '→';
+        font-family: var(--fh);
+        font-size: 1.4rem;
+        opacity: 0.35;
+        transition: opacity 0.2s, transform 0.2s;
+    }
+    .social-tile:hover::after {
+        opacity: 1;
+        transform: translateX(4px);
+    }
+
+    /* ── Footer CTA section tighter spacing ── */
+    .footer-body {
+        padding: 2.5rem 0 2rem !important;
+    }
+
+    .footer-email-row {
+        margin-bottom: 2rem !important;
+    }
+
+    .footer-email-row .btn {
+        width: 100%;
+        text-align: center;
+        font-size: 0.78rem;
+        padding: 0.85rem 1rem;
+        word-break: break-all;
+    }
+
+    /* ── Footer credits tighter ── */
+    .footer-credits {
+        gap: 0.6rem;
+        padding-top: 1.5rem;
+    }
+
+    .cr-copy {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .cr-tag {
+        font-size: 0.62rem;
+    }
+
+    .cr-dev {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    /* ── Ticker strip: prevent line-breaks ── */
+    .footer-strip {
+        overflow: hidden;
+    }
+
+    .footer-strip .ticker-track {
+        white-space: nowrap;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-h {
+        font-size: 1.65rem !important;
+    }
+
+    .social-tile {
+        min-height: 62px !important;
+        padding: 0.85rem 1rem !important;
+    }
+
+    .st-name {
+        font-size: 1.15rem !important;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SHORTS CAROUSEL — mobile finger-swipe polish
+   ────────────────────────────────────────────────────────────── */
+
+/* ──────────────────────────────────────────────────────────────
+   SHORTS CAROUSEL — native scroll-snap (mobile)
+   ────────────────────────────────────────────────────────────── */
+
+/* The track-wrap is now the scroll container; make sure it pans cleanly */
+.shorts-track-wrap {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain; /* swipe doesn't go back to previous page */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* On mobile let cards take more screen so swipe target is big */
+@media (max-width: 768px) {
+    .shorts-track {
+        /* big inline padding so first/last cards can center on small screens */
+        padding: 1.5rem 7.5vw;
+    }
+    .short-card {
+        scroll-snap-align: center;
+    }
+}
+
+/* Visual feedback when active card is in tap-to-interact mode */
+@media (max-width: 992px) {
+    .short-card.is-interacting::after {
+        content: 'TAP OUTSIDE TO SWIPE AGAIN';
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--fh, sans-serif);
+        font-size: 0.55rem;
+        letter-spacing: 2px;
+        color: var(--ink, #000);
+        background: var(--yellow, #FFD700);
+        padding: 4px 10px;
+        border: 1.5px solid var(--ink, #000);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 60;
+    }
+
+    .shorts-scroll-hint {
+        font-size: 0.7rem !important;
+        opacity: 0.75;
+    }
+
+    /* Bigger, easier-to-hit arrow buttons */
+    .shorts-nav {
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   PROJECT VIDEO MODAL — small touches (main mobile rules live in style.css)
+   ────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    /* Slightly bigger close button for easier tapping */
+    .modal-close {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Project play button slightly smaller on phones */
+    .proj-play-btn {
+        width: 54px !important;
+        height: 54px !important;
+    }
+}
+
+/* Smaller project grid spacing on mobile */
+@media (max-width: 768px) {
+    .proj-grid {
+        gap: 1.75rem !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE VISUAL POLISH — applied across the site for cleaner look
+   ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    /* ── 1. Hero timecode — make it pop with yellow accent ── */
+    .timecode {
+        font-size: 0.9rem !important;
+        letter-spacing: 3px !important;
+        color: var(--yellow) !important;
+        font-weight: 700;
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.25);
+    }
+
+    /* ── 2. Tighten "To Be Highlighted" / featured grids ── */
+    .highlighted-section,
+    .featured-section {
+        padding: 60px 0 !important;
+    }
+    .highlight-grid {
+        gap: 1.25rem !important;
+    }
+    .highlight-card {
+        margin-bottom: 0 !important;
+    }
+    .highlight-item-title {
+        font-size: 1.1rem !important;
+        line-height: 1.2 !important;
+    }
+    .highlight-item-desc {
+        font-size: 0.85rem !important;
+        line-height: 1.45 !important;
+        opacity: 0.85;
+    }
+    .highlight-info {
+        padding: 1rem 0.25rem !important;
+    }
+
+    /* ── 3. Project showcase numbers — bigger, yellow accent ── */
+    .proj-num {
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        color: var(--yellow) !important;
+        letter-spacing: 2px;
+        opacity: 1 !important;
+    }
+    .proj-info {
+        padding: 0.85rem 0.25rem 1.5rem !important;
+    }
+    .proj-info h3 {
+        font-size: 0.95rem !important;
+        line-height: 1.3 !important;
+        margin-top: 0.4rem !important;
+    }
+
+    /* ── 4. Slight brightness lift on project thumbnails ── */
+    .proj-thumb-bg {
+        filter: brightness(1.08) contrast(1.04);
+    }
+    .proj-thumb-overlay {
+        background: linear-gradient(160deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.35) 100%) !important;
+    }
+
+    /* ── 5. Tools list — 2-column grid on mobile (saves scroll) ── */
+    .tools-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.6rem !important;
+        min-height: auto !important;
+        perspective: none !important;
+    }
+    .tool-card {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        padding: 0.85rem !important;
+        font-size: 0.8rem !important;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+    .tool-card .tc-icon,
+    .tool-card svg,
+    .tool-card img {
+        width: 28px !important;
+        height: 28px !important;
+        flex-shrink: 0;
+    }
+    .tool-card .tc-name {
+        font-size: 0.85rem !important;
+        font-weight: 700;
+    }
+    .tool-card .tc-desc {
+        font-size: 0.65rem !important;
+        opacity: 0.75;
+        line-height: 1.25;
+    }
+
+    /* ── 6. Stats (5+ / 50+) — more visual weight ── */
+    .s-stats {
+        gap: 2.5rem !important;
+        justify-content: flex-start !important;
+        padding-bottom: 1.75rem !important;
+    }
+    .s-stat-num {
+        font-size: 2.6rem !important;
+        line-height: 1 !important;
+        color: var(--ink) !important;
+    }
+    .s-stat-label {
+        font-size: 0.65rem !important;
+        letter-spacing: 2px !important;
+        opacity: 0.7;
+    }
+
+    /* ── 7. Specializations list — tighter rows ── */
+    .spec-list li {
+        font-size: 0.85rem !important;
+        padding: 0.55rem 0.85rem 0.55rem 1rem !important;
+        border-left-width: 3px !important;
+    }
+
+    /* ── 8. Project Type dropdown — custom neubrutalism style ── */
+    .form-field select,
+    select[name="project-type"] {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 12px 8px;
+        padding-right: 2.5rem !important;
+        border: 2px solid var(--ink) !important;
+        font-family: var(--fc), sans-serif !important;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* ── 9. Section heading "READY TO SCULPT YOUR STORY?" — punchier ── */
+    .footer-h,
+    .ready-h,
+    h2.section-h {
+        text-shadow: 3px 3px 0 var(--yellow, #FFD700);
+    }
+
+    /* ── 10. Email row CTA — bolder ── */
+    .footer-email-row .btn {
+        background: var(--ink) !important;
+        color: var(--c0, #f5f1ea) !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px;
+        box-shadow: 4px 4px 0 var(--yellow, #FFD700);
+        border: 2px solid var(--ink) !important;
+    }
+    .footer-email-row .btn:hover,
+    .footer-email-row .btn:active {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--yellow, #FFD700);
+    }
+
+    /* ── 11. Social tiles — clearer hierarchy with arrow ── */
+    .social-tile {
+        background: var(--c0, #f5f1ea);
+    }
+    .social-tile .st-name {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .social-tile:hover {
+        background: var(--ink) !important;
+        color: var(--c0) !important;
+    }
+    .social-tile:hover .st-name,
+    .social-tile:hover .st-abbr {
+        color: var(--c0) !important;
+    }
+
+    /* ── 12. Scroll-to-top button — much more visible ── */
+    .scroll-top {
+        width: 48px !important;
+        height: 48px !important;
+        background: var(--ink, #111) !important;
+        color: var(--yellow, #FFD700) !important;
+        border: 2px solid var(--yellow, #FFD700) !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.45) !important;
+        font-size: 1.3rem !important;
+        font-weight: 700;
+        right: 16px !important;
+        bottom: 16px !important;
+    }
+    .scroll-top:hover,
+    .scroll-top:active {
+        background: var(--yellow, #FFD700) !important;
+        color: var(--ink, #111) !important;
+    }
+
+    /* ── 13. Section vertical rhythm — consistent breathing room ── */
+    section {
+        padding-top: clamp(48px, 8vw, 80px);
+        padding-bottom: clamp(48px, 8vw, 80px);
+    }
+
+    /* ── 14. Body text minimum size for legibility ── */
+    p, li, .text-body {
+        font-size: max(14px, 0.9rem);
+    }
+
+    /* ── 15. Quick Cuts "60 / 9:16 / 7" stats — tighter ── */
+    .shorts-stat .num,
+    .shorts-stat strong {
+        font-size: 1.7rem !important;
+    }
+    .shorts-stat .label,
+    .shorts-stat small {
+        font-size: 0.6rem !important;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even tighter on small phones */
+    .tools-grid {
+        gap: 0.5rem !important;
+    }
+    .tool-card {
+        padding: 0.7rem !important;
+    }
+    .s-stat-num {
+        font-size: 2.2rem !important;
+    }
+    .proj-info h3 {
+        font-size: 0.88rem !important;
+    }
+    .scroll-top {
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SWIPE HINT — appears below AI Shorts & Real Estate carousels
+   so mobile users know the row scrolls horizontally
+   ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .yt-shorts-section .yts-grid,
+    .yt-shorts-row    .yt-shorts-grid {
+        position: relative;
+    }
+    /* Insert the hint as a ::after on the section wrapper */
+    .yt-shorts-section::after,
+    .yt-shorts-row::after {
+        content: '← SWIPE TO SEE MORE →';
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        font-family: var(--fh, sans-serif);
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        color: var(--yellow, #FFD700);
+        opacity: 0.7;
+        animation: swipeHintPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes swipeHintPulse {
+        0%, 100% { opacity: 0.45; transform: translateX(0); }
+        50%      { opacity: 0.9;  transform: translateX(3px); }
+    }
+
+    /* Soft gradient fades on the carousel edges so the partial peek looks intentional */
+    .yt-shorts-section,
+    .yt-shorts-row {
+        position: relative;
+    }
+    .yt-shorts-section .yts-grid::after,
+    .yt-shorts-row    .yt-shorts-grid::after {
+        /* Trailing spacer so the last card can fully center */
+        content: '';
+        flex: 0 0 8vw;
+    }
+}
