@@ -1121,14 +1121,18 @@ body.modal-open .cursor-dot {
 .proj-card:hover .pt-hover { opacity: 1; }
 .proj-card:focus-visible .pt-hover { opacity: 1; }
 .proj-info { padding: 1.1rem 1.2rem 1.3rem; flex: 1; transition: background 0.22s ease, color 0.22s ease; }
-.proj-card:nth-child(1):hover .proj-info { background: var(--yellow); }
-.proj-card:nth-child(2):hover .proj-info { background: var(--green); }
-.proj-card:nth-child(3):hover .proj-info { background: var(--red); }
-.proj-card:nth-child(4):hover .proj-info { background: var(--blue); }
-.proj-card:nth-child(5):hover .proj-info { background: var(--c2); }
-.proj-card:nth-child(6):hover .proj-info { background: var(--yellow); }
+/* Hover colors — cyclic pattern for variety */
+.proj-card:nth-child(4n+1):hover .proj-info { background: var(--yellow); }
+.proj-card:nth-child(4n+2):hover .proj-info { background: var(--green); }
+.proj-card:nth-child(4n+3):hover .proj-info { background: var(--red); }
+.proj-card:nth-child(4n+4):hover .proj-info { background: var(--blue); }
+
 .proj-info h3 { font-family: var(--fh); font-size: 1.55rem; margin-bottom: 0.32rem; color: var(--ink); transition: color 0.2s; }
-.proj-card:nth-child(2):hover h3,.proj-card:nth-child(3):hover h3,.proj-card:nth-child(4):hover h3 { color: var(--light); }
+
+/* Light text for dark backgrounds */
+.proj-card:nth-child(4n+2):hover h3, 
+.proj-card:nth-child(4n+3):hover h3, 
+.proj-card:nth-child(4n+4):hover h3 { color: var(--light); }
 .proj-tag { font-family: var(--fc); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.18rem 0.52rem; background: rgba(250,248,243,0.9); border: 1.5px solid var(--ink); color: var(--ink2); }
 
 /* Filter hide state */

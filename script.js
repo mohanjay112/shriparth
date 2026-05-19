@@ -726,8 +726,8 @@ gsap.from('.social-tile', {
 
 // ── Video registry ────────────────────────────────────────
 const videoMeta = {
-    featured1: { id: 'GXsNEZdMbBc', type: 'youtube', title: 'When Good Taste Becomes a Curse',
-                 tag: 'CINEMA ESSAY', desc: 'A cinematic deep-dive into the emotional power of negative space — how the moments between cuts define a film\'s soul.',
+    featured1: { id: '1NInV19MR3Q', type: 'youtube', title: 'Silence Between Frames',
+                 tag: 'FEATURED PROJECT', desc: 'A cinematic deep-dive into the emotional power of negative space — exploring how the moments between cuts define a film\'s soul.',
                  meta: [['Views','50K+'],['Editing','90 hrs'],['Runtime','18 min']] },
     p1:        { id: 'GXsNEZdMbBc', type: 'youtube', title: 'When Good Taste Becomes a Curse',
                  tag: 'CINEMA ESSAY', desc: 'Exploring the power of silence and the space between frames in cinematic storytelling.',
@@ -768,6 +768,12 @@ const videoMeta = {
     short5:    { id: 'EUEsxEKYs0I', type: 'short', title: 'Raw Cut',
                  tag: '⚡ YOUTUBE SHORT', desc: 'Unpolished, unfiltered, uncut. The beauty of chaos when every frame has something to say.',
                  meta: [['Duration','0:55'],['Format','9:16'],['Style','Raw']] },
+    h1:        { id: 'E8WvVFB7klo', type: 'youtube', title: 'Visual Storytelling',
+                 tag: 'CREATIVE SPOTLIGHT', desc: 'Exploring the depths of cinematic rhythm and emotional resonance through precise editing and sound design.',
+                 meta: [['Type','Creative'],['Tone','Cinematic'],['Focus','Rhythm']] },
+    h2:        { id: '5E8WE2xhMqU', type: 'youtube', title: 'Advanced Post-Production',
+                 tag: 'TECHNICAL SHOWCASE', desc: 'A showcase of complex transitions, precise color grading, and advanced visual effects integration.',
+                 meta: [['Type','Technical'],['Software','DaVinci'],['VFX','After Effects']] },
 };
 
 function addWatchButton(meta) {
@@ -1004,11 +1010,11 @@ document.addEventListener('click', (e) => {
     const videoKey = trigger.dataset.videoId;
     if (!videoKey) return;
 
-    // Check for inline play (Featured Section)
+    // Check for inline play
     if (trigger.dataset.playInline === 'true') {
-        const container = document.getElementById('featuredVidContainer');
-        const triggerEl = container ? container.querySelector('.featured-inline-trigger') : null;
-        const iframeHost = document.getElementById('featuredIframeHost');
+        const section = trigger.closest('section');
+        const triggerEl = section ? section.querySelector('.featured-inline-trigger') : null;
+        const iframeHost = section ? section.querySelector('.feat-iframe-host') : null;
         
         if (triggerEl && iframeHost && !triggerEl.classList.contains('video-active')) {
             const meta = videoMeta[videoKey];

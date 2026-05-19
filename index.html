@@ -1,4 +1,4 @@
-<!--  This site was created by Durgesh Sonar -->
+<!--  This site was created by Soham Kachale  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -207,17 +207,19 @@
                 </div>
                 <div class="feat-grid">
                     <!-- ── Video side ── -->
-                    <div class="feat-vid-col reveal-up" id="featuredVidContainer">
-                        <div class="feat-vid-link vid-frame feat-thumb-frame" style="cursor: default;">
-                            <div class="feat-iframe-host" style="opacity: 1; pointer-events: all; position: relative; aspect-ratio: 16/9;">
-                                <iframe 
-                                    src="https://www.youtube.com/embed/1NInV19MR3Q?si=1_FKqfPm3FbZ-PHO" 
-                                    title="Featured Project: Silence Between Frames" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    allowfullscreen
-                                    style="width: 100%; height: 100%; border: none;">
-                                </iframe>
+                    <div class="feat-vid-col">
+                        <div class="proj-card reveal-up" data-video-id="featured1" data-num="★" style="--delay:0s">
+                            <div class="proj-vid-frame">
+                                <iframe src="https://www.youtube.com/embed/1NInV19MR3Q?si=1_FKqfPm3FbZ-PHO"
+                                    title="Featured Project: Silence Between Frames" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="proj-info">
+                                <div class="proj-info-left">
+                                    <span class="proj-num">★</span>
+                                    <h3>Silence Between Frames</h3>
+                                </div>
                             </div>
                         </div>
                         <div class="vid-accent"></div>
@@ -249,8 +251,8 @@
                                 <span class="ftag">Color Grade</span>
                             </div>
                             <button class="btn btn-dark btn-block mt-lg feat-watch-btn play-trigger"
-                                data-video-id="featured1" data-play-inline="true">
-                                ▶ &nbsp; WATCH NOW
+                                data-video-id="featured1">
+                                ▶ &nbsp; OPEN PROJECT
                             </button>
                         </div>
                     </div>
@@ -269,42 +271,35 @@
                 </div>
                 
                 <div class="highlight-grid">
-                    <!-- Video 1 -->
-
-                    <div class="highlight-card reveal-up" style="--delay:0.1s">
-                        <div class="highlight-vid-frame">
-                            <iframe 
-                                src="https://www.youtube-nocookie.com/embed/E8WvVFB7klo?rel=0&modestbranding=1" 
-                                title="Highlighted Project 1" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen>
-                            </iframe>
-                            <div class="vid-corner-accent tr"></div>
-                            <div class="vid-corner-accent bl"></div>
+                    <!-- Highlight 1 -->
+                    <div class="proj-card reveal-up" data-video-id="h1" data-num="01" style="--delay:0.1s">
+                        <div class="proj-vid-frame">
+                            <iframe src="https://www.youtube.com/embed/E8WvVFB7klo?rel=0&modestbranding=1"
+                                title="Visual Storytelling" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <div class="highlight-info">
-                            <h3 class="highlight-item-title">Visual Storytelling</h3>
-                            <p class="highlight-item-desc">Exploring the depths of cinematic rhythm and emotional resonance.</p>
+                        <div class="proj-info">
+                            <div class="proj-info-left">
+                                <span class="proj-num">01</span>
+                                <h3>Visual Storytelling</h3>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Video 2 -->
-                    <div class="highlight-card reveal-up" style="--delay:0.2s">
-                        <div class="highlight-vid-frame">
-                            <iframe 
-                                src="https://www.youtube-nocookie.com/embed/5E8WE2xhMqU?rel=0&modestbranding=1" 
-                                title="Highlighted Project 2" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen>
-                            </iframe>
-                            <div class="vid-corner-accent tr"></div>
-                            <div class="vid-corner-accent bl"></div>
+                    <!-- Highlight 2 -->
+                    <div class="proj-card reveal-up" data-video-id="h2" data-num="02" style="--delay:0.2s">
+                        <div class="proj-vid-frame">
+                            <iframe src="https://www.youtube.com/embed/5E8WE2xhMqU?rel=0&modestbranding=1"
+                                title="Advanced Post-Production" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <div class="highlight-info">
-                            <h3 class="highlight-item-title">Advanced Post-Production</h3>
-                            <p class="highlight-item-desc">A showcase of complex transitions and precise color grading.</p>
+                        <div class="proj-info">
+                            <div class="proj-info-left">
+                                <span class="proj-num">02</span>
+                                <h3>Advanced Post-Production</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -321,9 +316,13 @@
                 <div class="proj-grid">
 
                     <!-- Project 01 -->
-                    <div class="proj-card reveal-up" data-video-id="p1" data-category="essay" data-num="01" style="--delay:0s">
+                    <div class="proj-card reveal-up" data-video-id="p1" data-category="essay" data-num="01"
+                        style="--delay:0s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube.com/embed/GXsNEZdMbBc?rel=0&modestbranding=1" title="When Good Taste Becomes a Curse" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/GXsNEZdMbBc?rel=0&modestbranding=1"
+                                title="When Good Taste Becomes a Curse" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -334,9 +333,13 @@
                     </div>
 
                     <!-- Project 02 -->
-                    <div class="proj-card reveal-up" data-video-id="p2" data-category="narrative" data-num="02" style="--delay:0.05s">
+                    <div class="proj-card reveal-up" data-video-id="p2" data-category="narrative" data-num="02"
+                        style="--delay:0.05s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube.com/embed/Jq9D1OiQO6c?rel=0&modestbranding=1" title="The Cost of Being Spider-Man (And Why Marvel Won't Pay It)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/Jq9D1OiQO6c?rel=0&modestbranding=1"
+                                title="The Cost of Being Spider-Man (And Why Marvel Won't Pay It)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -347,9 +350,14 @@
                     </div>
 
                     <!-- Project 03 -->
-                    <div class="proj-card reveal-up" data-video-id="p3" data-category="essay" data-num="03" style="--delay:0.1s">
+                    <div class="proj-card reveal-up" data-video-id="p3" data-category="essay" data-num="03"
+                        style="--delay:0.1s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube-nocookie.com/embed/rds2D-koeRA?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0" title="Chalchitra Gatha" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe
+                                src="https://www.youtube-nocookie.com/embed/rds2D-koeRA?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0"
+                                title="Chalchitra Gatha" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -358,11 +366,16 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Project 04 -->
-                    <div class="proj-card reveal-up" data-video-id="p4" data-category="narrative" data-num="04" style="--delay:0s">
+                    <div class="proj-card reveal-up" data-video-id="p4" data-category="narrative" data-num="04"
+                        style="--delay:0s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube-nocookie.com/embed/lYLvPzTBSVE?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0" title="Vishwaayan 2023 | Fest After Movie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe
+                                src="https://www.youtube-nocookie.com/embed/lYLvPzTBSVE?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0"
+                                title="Vishwaayan 2023 | Fest After Movie" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -373,22 +386,33 @@
                     </div>
 
                     <!-- Project 05 -->
-                    <div class="proj-card reveal-up" data-video-id="p5" data-category="essay" data-num="05" style="--delay:0.05s">
+                    <div class="proj-card reveal-up" data-video-id="p5" data-category="essay" data-num="05"
+                        style="--delay:0.05s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube-nocookie.com/embed/7rNf4TygTEw?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0" title="Meta Quest 3 Review: Why Isn't Anyone Talking About This VR Headset!? | Quest 3 | AevyTv Cohort 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe
+                                src="https://www.youtube-nocookie.com/embed/7rNf4TygTEw?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0"
+                                title="Meta Quest 3 Review: Why Isn't Anyone Talking About This VR Headset!? | Quest 3 | AevyTv Cohort 7"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">05</span>
-                                <h3>Meta Quest 3 Review: Why Isn't Anyone Talking About This VR Headset!? | Quest 3 | AevyTv Cohort 7</h3>
+                                <h3>Meta Quest 3 Review: Why Isn't Anyone Talking About This VR Headset!? | Quest 3 |
+                                    AevyTv Cohort 7</h3>
                             </div>
                         </div>
                     </div>
 
                     <!-- Project 06 -->
-                    <div class="proj-card reveal-up" data-video-id="p6" data-category="commercial" data-num="06" style="--delay:0.1s">
+                    <div class="proj-card reveal-up" data-video-id="p6" data-category="commercial" data-num="06"
+                        style="--delay:0.1s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube.com/embed/NIIqW-gSDLk?rel=0&modestbranding=1" title="Sometimes its okay to do.... | Aevython | AevyTv Cohort 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/NIIqW-gSDLk?rel=0&modestbranding=1"
+                                title="Sometimes its okay to do.... | Aevython | AevyTv Cohort 7" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -399,9 +423,13 @@
                     </div>
 
                     <!-- Project 07 -->
-                    <div class="proj-card reveal-up" data-video-id="p7" data-category="narrative" data-num="07" style="--delay:0s">
+                    <div class="proj-card reveal-up" data-video-id="p7" data-category="narrative" data-num="07"
+                        style="--delay:0s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube.com/embed/_NA9OHg8RC0?rel=0&modestbranding=1" title="KUMSS Promo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/_NA9OHg8RC0?rel=0&modestbranding=1"
+                                title="KUMSS Promo" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -412,9 +440,14 @@
                     </div>
 
                     <!-- Project 08 -->
-                    <div class="proj-card reveal-up" data-video-id="p8" data-category="narrative" data-num="08" style="--delay:0.05s">
+                    <div class="proj-card reveal-up" data-video-id="p8" data-category="narrative" data-num="08"
+                        style="--delay:0.05s">
                         <div class="proj-vid-frame">
-                            <iframe src="https://www.youtube.com/embed/g8QpxHtQKbM?rel=0&modestbranding=1" title="When there's nothing to eat at home | Aevython Day 1 | AevyTv Cohort 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/g8QpxHtQKbM?rel=0&modestbranding=1"
+                                title="When there's nothing to eat at home | Aevython Day 1 | AevyTv Cohort 7"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
@@ -468,92 +501,115 @@
                     <div class="film-perf film-perf-l" aria-hidden="true">
                         <span></span><span></span><span></span><span></span><span></span><span></span>
                     </div>
-                    
-                <div class="shorts-track">
-                
-                    <!-- 1. Vimeo -->
-                    <div class="short-card video-active">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://player.vimeo.com/video/1186745717?autoplay=0&muted=0&loop=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                    <div class="shorts-track">
+
+                        <!-- 1. Vimeo -->
+                        <div class="short-card video-active">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe src="https://player.vimeo.com/video/1186745717?autoplay=0&muted=0&loop=1"
+                                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                                        style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 2. YouTube Shorts -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.youtube.com/embed/3XDO2xIGdRA?autoplay=0&mute=0&controls=1&loop=1&playlist=3XDO2xIGdRA&modestbranding=1&rel=0&enablejsapi=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 2. YouTube Shorts -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/3XDO2xIGdRA?autoplay=0&mute=0&controls=1&loop=1&playlist=3XDO2xIGdRA&modestbranding=1&rel=0&enablejsapi=1"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 3. YouTube Shorts -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.youtube.com/embed/3nfiTl6QpaQ?autoplay=0&mute=0&controls=1&loop=1&playlist=3nfiTl6QpaQ&modestbranding=1&rel=0&enablejsapi=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 3. YouTube Shorts -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/3nfiTl6QpaQ?autoplay=0&mute=0&controls=1&loop=1&playlist=3nfiTl6QpaQ&modestbranding=1&rel=0&enablejsapi=1"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 4. YouTube Shorts -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.youtube.com/embed/EUEsxEKYs0I?autoplay=0&mute=0&controls=1&loop=1&playlist=EUEsxEKYs0I&modestbranding=1&rel=0&enablejsapi=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 4. YouTube Shorts -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/EUEsxEKYs0I?autoplay=0&mute=0&controls=1&loop=1&playlist=EUEsxEKYs0I&modestbranding=1&rel=0&enablejsapi=1"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 5. Instagram Reel -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.instagram.com/reel/DPB0EPdiR8M/embed" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 5. Instagram Reel -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe src="https://www.instagram.com/reel/DPB0EPdiR8M/embed"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 6. Instagram Reel -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.instagram.com/reel/DPUMDruAla8/embed" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 6. Instagram Reel -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe src="https://www.instagram.com/reel/DPUMDruAla8/embed"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 7. Instagram Reel -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.instagram.com/reel/DOGxjJWjJpz/embed" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 7. Instagram Reel -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe src="https://www.instagram.com/reel/DOGxjJWjJpz/embed"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 8. YouTube Shorts -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.youtube.com/embed/Rr7MueDRwDU?autoplay=0&mute=0&controls=1&loop=1&playlist=Rr7MueDRwDU&modestbranding=1&rel=0&enablejsapi=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 8. YouTube Shorts -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/Rr7MueDRwDU?autoplay=0&mute=0&controls=1&loop=1&playlist=Rr7MueDRwDU&modestbranding=1&rel=0&enablejsapi=1"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- 9. YouTube Shorts -->
-                    <div class="short-card">
-                        <div class="short-thumb">
-                            <div class="short-iframe-host">
-                                <iframe src="https://www.youtube.com/embed/VaIK3nOEJhg?autoplay=0&mute=0&controls=1&loop=1&playlist=VaIK3nOEJhg&modestbranding=1&rel=0&enablejsapi=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+
+                        <!-- 9. YouTube Shorts -->
+                        <div class="short-card">
+                            <div class="short-thumb">
+                                <div class="short-iframe-host">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/VaIK3nOEJhg?autoplay=0&mute=0&controls=1&loop=1&playlist=VaIK3nOEJhg&modestbranding=1&rel=0&enablejsapi=1"
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-                
-                </div>
-                    
+
                     <!-- film perforations right -->
                     <div class="film-perf film-perf-r" aria-hidden="true">
                         <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -561,10 +617,16 @@
                 </div>
 
                 <button class="shorts-nav shorts-prev" aria-label="Previous shorts">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
                 </button>
                 <button class="shorts-nav shorts-next" aria-label="Next shorts">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
                 </button>
             </div>
 
@@ -580,23 +642,34 @@
                     <h2 class="yts-title">Gen AI Powered Shorts</h2>
                     <p class="yts-subtitle">Turning ideas into high-impact shorts with Gen AI precision</p>
                 </div>
-                
+
                 <div class="yts-grid" data-lenis-prevent-touch>
                     <!-- 1 -->
                     <div class="yts-card">
-                        <iframe src="https://www.youtube.com/embed/Te60HUvDC5w?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
+                        <iframe
+                            src="https://www.youtube.com/embed/Te60HUvDC5w?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
                     </div>
                     <!-- 2 -->
                     <div class="yts-card">
-                        <iframe src="https://player.vimeo.com/video/1186742617?autoplay=0&muted=0&loop=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
+                        <iframe src="https://player.vimeo.com/video/1186742617?autoplay=0&muted=0&loop=1"
+                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"
+                            style="width:100%; height:100%; border:none;"></iframe>
                     </div>
                     <!-- 3 -->
                     <div class="yts-card">
-                        <iframe src="https://www.youtube.com/embed/KiQfJWcboAg?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
+                        <iframe
+                            src="https://www.youtube.com/embed/KiQfJWcboAg?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
                     </div>
                     <!-- 4 -->
                     <div class="yts-card">
-                        <iframe src="https://www.youtube.com/embed/biz9dt3WI-Q?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
+                        <iframe
+                            src="https://www.youtube.com/embed/biz9dt3WI-Q?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
                     </div>
                 </div>
             </div>
@@ -607,18 +680,22 @@
             <div class="wrap">
                 <div class="yt-shorts-header reveal-up">
                     <h2 class="yt-shorts-title">Cinematic Real Estate Shorts Editing</h2>
-                    <p class="yt-shorts-subtitle">Every property has a story — we turn it into a scroll-stopping short.</p>
+                    <p class="yt-shorts-subtitle">Every property has a story — we turn it into a scroll-stopping short.
+                    </p>
                 </div>
-                
+
                 <div class="yt-shorts-grid" data-lenis-prevent-touch>
                     <div class="yt-short-card reveal-up">
-                        <iframe src="https://player.vimeo.com/video/1186742744" allow="autoplay; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/1186742744"
+                            allow="autoplay; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
                     </div>
                     <div class="yt-short-card reveal-up" style="--delay: 0.1s">
-                        <iframe src="https://player.vimeo.com/video/1186742692" allow="autoplay; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/1186742692"
+                            allow="autoplay; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
                     </div>
                     <div class="yt-short-card reveal-up" style="--delay: 0.2s">
-                        <iframe src="https://player.vimeo.com/video/1186742668" allow="autoplay; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/1186742668"
+                            allow="autoplay; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -659,7 +736,8 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your vision..." required></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your vision..."
+                                required></textarea>
                         </div>
                         <button type="submit" class="form-submit">Start a Project</button>
                     </form>
@@ -671,7 +749,8 @@
                         <div class="philo-content">
                             <span class="purpose-word">PURPOSE.</span>
                             <p class="mt-md">Most edits look fine.<br>They just stitch <strong>Scene A</strong> to
-                                <strong>Scene B</strong>.</p>
+                                <strong>Scene B</strong>.
+                            </p>
                             <p>But the edits that stick — the ones that grab you by the collar and refuse to let go —
                                 know exactly <strong>why</strong> they exist.</p>
                             <p class="mt-md"><strong>Every single decision,</strong></p>
@@ -783,8 +862,7 @@
                 <span class="eyebrow footer-eyebrow">Let's Work Together</span>
                 <h2 class="footer-h">READY TO SCULPT<br>YOUR STORY?</h2>
                 <div class="footer-email-row">
-                    <a href="mailto:shriparthc05@gmail.com"
-                        class="btn btn-dark footer-email-btn">
+                    <a href="mailto:shriparthc05@gmail.com" class="btn btn-dark footer-email-btn">
                         <span class="email-icon">✉</span>
                         <span>shriparthc05@gmail.com</span>
                     </a>
@@ -799,13 +877,14 @@
                     <span class="st-abbr">YT</span><span class="st-name">YouTube</span><span class="st-arrow">↗</span>
                 </a>
                 <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-tile st-in">
-                    <span class="st-abbr">IN</span><span class="st-name">X (Twitter)</span><span class="st-arrow">↗</span>
+                    <span class="st-abbr">IN</span><span class="st-name">X (Twitter)</span><span
+                        class="st-arrow">↗</span>
                 </a>
             </div>
             <div class="footer-credits">
                 <p class="cr-copy">© 2026 SHRIPARTH | ALL RIGHTS RESERVED</p>
-                <p class="cr-tag">Design & Developed by &nbsp; <a href="https://github.com/durgeshksonar5">Durgesh Sonar</a></p>
-                
+                <p class="cr-tag">Design & Developed by &nbsp; <a href="https://sohamkachale.netlify.app/">Soham Kachale</a></p>
+
             </div>
         </div>
     </footer>
@@ -873,53 +952,53 @@
     <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
     <script src="script.js?v=15"></script>
     <script async src="//www.instagram.com/embed.js"></script>
-   
+
     <!-- ─── BULLETPROOF BUTTON FIX ──────────────────────── -->
     <script>
-    (function () {
-        function init() {
-            // ── Fix scroll-top button ──
-            var topBtn = document.getElementById('scrollTopBtn');
-            if (topBtn) {
-                // Force visible + clickable
-                topBtn.style.pointerEvents = 'auto';
-                topBtn.style.zIndex = '99990';
-                // Remove any blocking listeners by cloning
-                var newTopBtn = topBtn.cloneNode(true);
-                topBtn.parentNode.replaceChild(newTopBtn, topBtn);
-                newTopBtn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+        (function () {
+            function init() {
+                // ── Fix scroll-top button ──
+                var topBtn = document.getElementById('scrollTopBtn');
+                if (topBtn) {
+                    // Force visible + clickable
+                    topBtn.style.pointerEvents = 'auto';
+                    topBtn.style.zIndex = '99990';
+                    // Remove any blocking listeners by cloning
+                    var newTopBtn = topBtn.cloneNode(true);
+                    topBtn.parentNode.replaceChild(newTopBtn, topBtn);
+                    newTopBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                    // Always show after 500px scroll
+                    window.addEventListener('scroll', function () {
+                        if (window.scrollY > 500) newTopBtn.classList.add('is-visible');
+                        else newTopBtn.classList.remove('is-visible');
+                    }, { passive: true });
+                }
+
+                // ── Shorts carousel arrows: just ensure they're clickable.
+                // No cloneNode — that was wiping the IIFE's listeners and
+                // copying the initial disabled=true attribute, leaving the
+                // button stuck-disabled. The IIFE in script.js handles clicks.
+                var prev = document.querySelector('.shorts-prev');
+                var next = document.querySelector('.shorts-next');
+                [prev, next].forEach(function (b) {
+                    if (!b) return;
+                    b.style.pointerEvents = 'auto';
+                    b.style.zIndex = '999';
+                    b.removeAttribute('disabled');
                 });
-                // Always show after 500px scroll
-                window.addEventListener('scroll', function () {
-                    if (window.scrollY > 500) newTopBtn.classList.add('is-visible');
-                    else newTopBtn.classList.remove('is-visible');
-                }, { passive: true });
             }
 
-            // ── Shorts carousel arrows: just ensure they're clickable.
-            // No cloneNode — that was wiping the IIFE's listeners and
-            // copying the initial disabled=true attribute, leaving the
-            // button stuck-disabled. The IIFE in script.js handles clicks.
-            var prev = document.querySelector('.shorts-prev');
-            var next = document.querySelector('.shorts-next');
-            [prev, next].forEach(function (b) {
-                if (!b) return;
-                b.style.pointerEvents = 'auto';
-                b.style.zIndex        = '999';
-                b.removeAttribute('disabled');
-            });
-        }
-
-        // Run after everything else is done
-        if (document.readyState === 'complete') {
-            setTimeout(init, 500);
-        } else {
-            window.addEventListener('load', function () { setTimeout(init, 500); });
-        }
-    })();
+            // Run after everything else is done
+            if (document.readyState === 'complete') {
+                setTimeout(init, 500);
+            } else {
+                window.addEventListener('load', function () { setTimeout(init, 500); });
+            }
+        })();
     </script>
 
 
