@@ -255,104 +255,11 @@ document.querySelectorAll('.stat-num[data-count]').forEach(el => statObs.observe
 // ══════════════════════════════════════════════════════════
 
 function dismissLoader() {
-    const loader = document.getElementById('loader');
-    if (!loader || loader.dataset.dismissed === 'true') return;
-    loader.dataset.dismissed = 'true';
-
-    // Pure CSS class dismissal — works even if GSAP failed
-    loader.classList.add('loader-exit');
-
-    // Also try GSAP if available
-    if (typeof gsap !== 'undefined') {
-        try {
-            gsap.timeline()
-                .to('.ls', { rotation: 360, scale: 1.4, stagger: 0.1, duration: 0.6, ease: 'power3.inOut' })
-                .to('.loader-label',          { y: -30, opacity: 0, duration: 0.3 }, '-=0.2')
-                .to('.loader-progress-track', { opacity: 0, duration: 0.15 }, '-=0.1')
-                .to('#loader', { yPercent: -100, duration: 0.65, ease: 'power4.inOut',
-                    onComplete: () => {
-                        loader.style.display = 'none';
-                        if (typeof initHero === 'function') initHero();
-                    }
-                });
-        } catch(e) {
-            loader.style.display = 'none';
-            if (typeof initHero === 'function') try { initHero(); } catch(e2) {}
-        }
-    } else {
-        // No GSAP — pure CSS already handles slide-up, just hide after transition
-        setTimeout(() => {
-            loader.style.display = 'none';
-            if (typeof initHero === 'function') try { initHero(); } catch(e) {}
-        }, 700);
-    }
+    // Handled entirely by V11 script in index.html
 }
-
-// Progress bar fill
-const loaderFill = document.getElementById('loaderFill');
-if (loaderFill) {
-    let prog = 0;
-    const fillInterval = setInterval(() => {
-        prog = Math.min(prog + Math.random() * 18, 90);
-        loaderFill.style.width = prog + '%';
-    }, 100);
-    const clearFill = () => { clearInterval(fillInterval); loaderFill.style.width = '100%'; };
-    window.addEventListener('load', clearFill, { once: true });
-    setTimeout(clearFill, 2000);
-}
-
-// Layer 1: window load event (ideal path)
-window.addEventListener('load', () => setTimeout(dismissLoader, 200), { once: true });
-
-// Layer 2: DOMContentLoaded safety (if load already fired)
-if (document.readyState === 'complete') {
-    setTimeout(dismissLoader, 400);
-} else {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(dismissLoader, 600), { once: true });
-}
-
-// Layer 3: Hard timeout — pure JS, no GSAP dependency, fires at 2.5s no matter what
-setTimeout(dismissLoader, 2500);
 
 function initHero() {
-    gsap.set('.monitor',        { y: 50, opacity: 0 });
-    gsap.set('.hero-tagline',   { opacity: 0, x: -20 });
-    gsap.set('.hero-btns',      { opacity: 0, y: 16 });
-    gsap.set('.monitor-bottom', { opacity: 0 });
-    gsap.set('.scroll-cue',     { opacity: 0 });
-
-    const tl = gsap.timeline({
-        onComplete: () => {
-            gsap.set(['.monitor','.hero-tagline','.hero-btns','.monitor-bottom','.scroll-cue'], { clearProps: 'all' });
-        },
-    });
-
-    tl.to('.monitor',        { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out' })
-      .to('.hero-tagline',   { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-      .to('.hero-btns',      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', clearProps: 'transform,y' }, '-=0.35')
-      .to('.monitor-bottom', { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.3')
-      .to('.scroll-cue',     { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.25');
-
-    // Headline parallax (skip if reduced motion)
-    if (!prefersReducedMotion) {
-        gsap.to('#heroHeadline', {
-            scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
-            y: -50, ease: 'none',
-        });
-
-    // Ambient shape floats — paused when hero not visible
-    const hs1Tween = gsap.to('.hs1', { y: -22, x: 10,  duration: 15, repeat: -1, yoyo: true, ease: 'sine.inOut', paused: true });
-    const hs2Tween = gsap.to('.hs2', { y:  20, x: -9,  duration: 12, repeat: -1, yoyo: true, ease: 'sine.inOut', paused: true });
-    const hs3Tween = gsap.to('.hs3', { y: -14, x:  6,  duration: 18, repeat: -1, yoyo: true, ease: 'sine.inOut', paused: true });
-    ScrollTrigger.create({
-        trigger: '#hero',
-        start: 'top bottom', end: 'bottom top',
-        onEnter:      () => { hs1Tween.play(); hs2Tween.play(); hs3Tween.play(); },
-        onLeave:      () => { hs1Tween.pause(); hs2Tween.pause(); hs3Tween.pause(); },
-        onEnterBack:  () => { hs1Tween.play(); hs2Tween.play(); hs3Tween.play(); },
-        onLeaveBack:  () => { hs1Tween.pause(); hs2Tween.pause(); hs3Tween.pause(); },
-    });
-    }
+    // No JS entrance animation required for V11 hero
 }
 
 // ══════════════════════════════════════════════════════════

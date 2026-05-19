@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap"
         rel="stylesheet">
     <script src="https://www.youtube.com/iframe_api" async></script>
     <link rel="stylesheet" href="style.css?v=15">
@@ -56,6 +56,159 @@
             }
         </style>
     </noscript>
+    
+    <style>
+        /* ── MISSING VARS FOR V11 SECTIONS ── */
+        :root {
+          --paper: #FFFCF4;
+          --yellow-soft: #FFD23F;
+          --red-soft: #E55934;
+          --lavender: #B8A9FA;
+          --b-thin: 2px solid var(--ink);
+          --b: 3px solid var(--ink);
+          --b-thick: 5px solid var(--ink);
+          --fm: 'Space Mono', monospace;
+          --fhero: 'Syne', sans-serif;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PRE-LOADER & STATUS BAR
+           ═══════════════════════════════════════════════════════════════ */
+        .loader{position:fixed;inset:0;z-index:9999;background:var(--ink) !important;color:var(--c0) !important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-family:var(--fm);transition:opacity .6s ease, visibility .6s; transform: none !important;}
+        .loader.gone{opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}
+        .l-slate{width:min(360px,80vw);border:5px solid var(--c0) !important;background:var(--c0) !important;color:var(--ink) !important;overflow:hidden}
+        .l-slate .clap-bar{height:20px;background-image:repeating-linear-gradient(135deg,var(--ink) 0 18px,var(--c0) 18px 36px) !important;border-bottom:3px solid var(--ink) !important}
+        .l-slate-header{padding:9px 16px;background:var(--ink) !important;color:var(--c0) !important;font-family:var(--fm);font-weight:700;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:3px solid var(--ink) !important}
+        .l-slate-body{padding:14px 16px;display:grid;gap:5px}
+        .l-slate-row{display:grid;grid-template-columns:auto 1fr;gap:12px;font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+        .l-slate-row b{color:#666}
+        .countdown{font-family:var(--fhero);font-weight:800;font-size:clamp(56px,9vw,92px);line-height:1;color:var(--yellow);text-shadow:5px 5px 0 var(--ink)}
+        .loader-msg{font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--c0)}
+
+        .statbar{background:var(--ink);color:var(--c0);padding:8px 2.5rem;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+        .statbar .rec{display:flex;align-items:center;gap:8px;color:var(--red-soft)}
+        .statbar .rec::before{content:"";width:9px;height:9px;background:var(--red-soft);border-radius:50%;animation:blink 1.2s infinite;flex-shrink:0}
+        .statbar .tc{color:var(--yellow);font-variant-numeric:tabular-nums}
+        @keyframes blink{0%,40%,100%{opacity:1}50%{opacity:.15}}
+
+        /* ═══════════════════════════════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════════════════════════════ */
+        .hero{
+          position:relative;
+          padding:3rem 0 0;
+          background:
+            repeating-linear-gradient(0deg,transparent 0 39px,rgba(0,0,0,.06) 39px 40px),
+            repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,0,0,.06) 39px 40px),
+            var(--c0) !important;
+          overflow:hidden;
+          border-bottom:var(--b-thick);
+          min-height: auto !important;
+        }
+        .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin:1.4rem 0 2rem}
+        .tag{
+          font-family:var(--fm);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+          padding:6px 12px;border:var(--b-thin);background:var(--paper);
+          display:inline-flex;align-items:center;gap:8px;color:var(--ink);
+        }
+        .tag .dot{width:8px;height:8px;background:var(--red-soft);border-radius:50%;animation:blink 1.4s infinite;flex-shrink:0}
+        .tag.gold{background:var(--yellow-soft)}
+
+        .hero-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:1.5rem}
+        .hero-title{
+          font-family:var(--fhero) !important;font-weight:800 !important;
+          font-size:clamp(56px,11vw,156px) !important;line-height:0.86 !important;letter-spacing:-0.04em !important;
+          text-transform:uppercase;
+          margin:6px 0 4px !important;
+          color: var(--ink) !important;
+        }
+        .hero-title .underline{
+          background:var(--yellow-soft);padding:0 0.05em;border:var(--b);
+          display:inline-block;transform:rotate(-1.5deg);box-shadow:var(--bs2);
+          margin:0 4px;position:relative;
+        }
+        .hero-title .underline::before{
+          content:"VOL. I";position:absolute;top:-22px;right:-12px;
+          background:var(--ink);color:var(--c0);padding:3px 7px;
+          font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:0.14em;
+          transform:rotate(8deg);border:2px solid var(--ink);
+          text-transform:uppercase;
+        }
+
+        .slate-card{
+          border:var(--b);background:var(--paper);box-shadow:var(--bs3);
+          min-width:280px;transform:rotate(2deg);overflow:hidden;align-self:end;
+        }
+        .slate-card .clap-bar{height:18px;background-image:repeating-linear-gradient(135deg,var(--ink) 0 14px,var(--yellow-soft) 14px 28px);border-bottom:var(--b)}
+        .slate-card .sc-top{padding:8px 14px;background:var(--ink);color:var(--c0);font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:var(--b)}
+        .slate-card .sc-body{padding:14px;display:grid;gap:8px}
+        .slate-card .sc-row{font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:grid;grid-template-columns:auto 1fr;gap:10px;color:var(--ink)}
+        .slate-card .sc-row b{color:#777;font-weight:700}
+
+        .hero-sub{
+          font-family:var(--fb);font-weight:500;
+          font-size:clamp(17px,1.8vw,22px);
+          max-width:680px;margin-bottom:2rem;line-height:1.4;color:var(--ink);
+        }
+
+        .cta-row{display:flex;flex-wrap:wrap;gap:14px;padding-bottom:4.5rem}
+        .btn.primary{background:var(--ink);color:var(--c0)}
+        .btn.gold{background:var(--yellow-soft)}
+        .btn .arrow{display:inline-block;transition:transform .15s}
+        .btn:hover .arrow{transform:translateX(4px)}
+
+        .subs{
+          background:var(--ink);color:var(--c0);
+          padding:10px 24px;text-align:center;
+          font-family:var(--fm);font-weight:700;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+        }
+        #subText{display:inline-block;transition:opacity .35s ease}
+        #subText.fade{opacity:0}
+
+        /* ═══════════════════════════════════════════════════════════════
+           PRESS NIGHT
+           ═══════════════════════════════════════════════════════════════ */
+        .press{background:var(--lavender);border-top:var(--b-thick);border-bottom:var(--b-thick);padding:5rem 0}
+        .press .sec-title{color:var(--ink) !important; font-family: var(--fh) !important;}
+        .press .sec-title::after{display:none}
+        .press .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.5rem}
+        .press .lead{max-width:620px}
+        .press .meta-badge{
+          font-family:var(--fm);font-size:0.7rem;font-weight:700;
+          letter-spacing:0.14em;text-transform:uppercase;
+          padding:0.55rem 0.95rem;border:var(--b);background:var(--paper);
+          box-shadow:var(--bs1);color:var(--ink);
+        }
+        .press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.4rem}
+        .review{
+          border:var(--b);background:var(--paper);box-shadow:var(--bs2);
+          padding:1.4rem;display:flex;flex-direction:column;gap:0.8rem;
+          transition:transform .15s, box-shadow .15s;
+        }
+        .review:hover{transform:translate(-3px,-3px);box-shadow:var(--bs3)}
+        .review:nth-child(3n+2){background:var(--yellow-soft)}
+        .review:nth-child(3n+3){background:var(--red-soft)}
+        .review .stars{font-family:var(--fh);font-size:1.5rem;letter-spacing:0.06em;color:var(--ink);line-height:1}
+        .review blockquote{font-family:var(--fb);font-weight:600;font-size:0.97rem;line-height:1.45;color:var(--ink);border-left:4px solid var(--ink);padding-left:0.85rem;margin:0;}
+        .review cite{font-family:var(--fm);font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;font-style:normal;color:var(--ink);margin-top:auto;opacity:0.85}
+        .press-disclaimer{
+          margin-top:2rem;padding:0.9rem 1.2rem;border:2px dashed var(--ink);
+          font-family:var(--fm);font-size:0.7rem;font-weight:700;
+          letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
+        }
+
+        @media (max-width:1000px){
+          .press-grid{grid-template-columns:repeat(2,1fr)}
+          .slate-card{transform:rotate(0deg);width:100%;min-width:0}
+        }
+        @media (max-width:640px){
+          .press-grid{grid-template-columns:1fr}
+          .statbar{padding:8px 1.25rem;font-size:0.6rem}
+          .countdown{font-size:clamp(48px,14vw,72px)}
+          .hero-title .underline::before{font-size:9px;top:-18px}
+          .hero-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 
 <body>
@@ -64,17 +217,30 @@
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
-    <!-- ─── LOADER ─────────────────────────────────────────────── -->
+    <!-- ════ PRE-LOADER ════ -->
     <div class="loader" id="loader">
-        <div class="loader-inner">
-            <div class="ls ls-1"></div>
-            <div class="ls ls-2"></div>
-            <div class="ls ls-3"></div>
-            <p class="loader-label">LOADING<br>THE CUT</p>
+      <div class="l-slate">
+        <div class="clap-bar"></div>
+        <div class="l-slate-header">
+          <span>SCENE 01 · TAKE 01 · ROLL A</span>
+          <span>SHRIPARTH FILMS</span>
         </div>
-        <div class="loader-progress-track">
-            <div class="loader-progress-fill" id="loaderFill"></div>
+        <div class="l-slate-body">
+          <div class="l-slate-row"><b>PROD.</b><span>KAHIHI HA SHRI</span></div>
+          <div class="l-slate-row"><b>DIR.</b><span>SHRIPARTH C.</span></div>
+          <div class="l-slate-row"><b>EDIT.</b><span>FRIENDLY NEIGHBORHOOD EDITOR</span></div>
+          <div class="l-slate-row"><b>DATE</b><span>KAL PAKKA</span></div>
         </div>
+      </div>
+      <div class="countdown" id="countdown">3</div>
+      <div class="loader-msg" id="loaderMsg">ROLLING · SOUND · SPEED</div>
+    </div>
+
+    <!-- ════ STATUS BAR ════ -->
+    <div class="statbar">
+      <span class="rec">REC · NOW PLAYING</span>
+      <span class="tc" id="tc">00:00:00:00</span>
+      <span>4K UHD · 60FPS · DOLBY ATMOS</span>
     </div>
 
     <!-- ─── HEADER ─────────────────────────────────────────────── -->
@@ -94,55 +260,39 @@
 
     <main>
 
-        <!-- ─── HERO ───────────────────────────────────────────────── -->
-        <section id="hero" class="hero-wrap">
-            <div class="hero-content">
-                <div class="monitor">
-                    <div class="monitor-top">
-                        <div class="monitor-top-left">
-                            <span class="rec-square"></span>
-                            <span>SHRIPARTH - VIDEO EDITOR</span>
-                        </div>
-                        <div class="monitor-top-right">
-                            <span class="badge-text">4K UHD</span>
-                            <span class="badge-yellow">60 FPS</span>
-                            <span class="badge-text"><span class="rec-square-small"></span> LIVE</span>
-                        </div>
-                    </div>
-                    <div class="monitor-body">
-                        <h1 class="hero-h1" id="heroHeadline">
-                            SHRIPARTH:<br>
-                            CRAFTING THE <span class="col-yellow">RHYTHM</span>
-                        </h1>
-                        <div class="tagline-box">
-                            <p class="hero-tagline">BEYOND THE CUT. BEYOND THE FRAME.</p>
-                        </div>
-                        <div class="hero-btns" id="heroBtns">
-                            <a href="#work" class="btn btn-hero-explore magnetic">EXPLORE REEL</a>
-                            <a href="#contact" class="btn btn-hero-start magnetic">START PROJECT</a>
-                        </div>
-                    </div>
-                    <div class="monitor-bottom">
-                        <span class="timecode">00:00:15:08</span>
-                        <div class="playback">
-                            <span class="play-pill">▶ PLAYING</span>
-                        </div>
-                        <div class="audio-vis">
-                            <div class="aud-bars">
-                                <div class="ab" style="height:40%;"></div>
-                                <div class="ab" style="height:85%;"></div>
-                                <div class="ab" style="height:60%;"></div>
-                                <div class="ab" style="height:92%;"></div>
-                                <div class="ab" style="height:50%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- ════ HERO ════ -->
+        <section class="hero" id="top">
+          <div class="wrap">
+            <div class="hero-meta">
+              <span class="tag"><span class="dot"></span>NOW STREAMING · S01:E01</span>
+              <span class="tag">STORYTELLER · WANNA-BE AUTEUR</span>
             </div>
 
-            <div class="scroll-cue">
-                <span class="sc-text">SCROLL</span>
+            <div class="hero-grid">
+              <h1 class="hero-title">SHRI<span class="underline">PARTH</span>.</h1>
+              <div class="slate-card">
+                <div class="clap-bar"></div>
+                <div class="sc-top"><span>SLATE</span><span>SC. 01</span></div>
+                <div class="sc-body">
+                  <div class="sc-row"><b>TITLE</b><span>Editor (occasionally writer &amp; camera too)</span></div>
+                  <div class="sc-row"><b>GENRE</b><span>Day Dreaming</span></div>
+                </div>
+              </div>
             </div>
+
+            <p class="hero-sub">
+              Cutting frames. Chasing rhythm. Occasionally crying at the timeline.
+            </p>
+
+            <div class="cta-row">
+              <a href="#work" class="btn gold">Cue The Tape <span class="arrow">▸</span></a>
+              <a href="#contact" class="btn primary">Greenlight A Project <span class="arrow">▸</span></a>
+            </div>
+          </div>
+
+          <div class="subs">
+            <span id="subText">[ MUSIC SWELLS ]</span>
+          </div>
         </section>
 
         <!-- ─── ABOUT ──────────────────────────────────────────────── -->
@@ -767,127 +917,203 @@
         </section>
 
         <!-- ─── SKILLS ───────────────────────────────────────────── -->
-        <section id="skills" class="skills-section section-pad">
-            <div class="wrap">
-                <div class="skills-top">
-                    <div class="reveal-up">
-                        <span class="eyebrow">Tools of the Trade</span>
-                        <h2 class="section-title">Skills &amp;<br>Toolkit</h2>
-                    </div>
-                    <p class="skills-intro reveal-up" style="--delay:0.1s">Every tool chosen with intent.<br>Every
-                        workflow serves the story.</p>
+        <section id="skills" class="method">
+          <div class="wrap">
+            <div class="toolkit">
+              <div class="skills-top">
+                <div>
+                  <span class="sec-eyebrow">Tools of the Trade</span>
+                  <h2>Skills &amp;<br/>Toolkit</h2>
                 </div>
-                <div class="skills-layout">
-                    <div class="tools-grid">
-                        <div class="tool-card">
-                            <div class="ti icon-pr">Pr</div>
-                            <div>
-                                <p class="tn">Premiere Pro</p>
-                                <p class="td">Primary editing &amp; story architecture</p>
-                            </div>
-                        </div>
-                        <div class="tool-card">
-                            <div class="ti icon-ae">Ae</div>
-                            <div>
-                                <p class="tn">After Effects</p>
-                                <p class="td">Motion graphics &amp; visual effects</p>
-                            </div>
-                        </div>
-                        <div class="tool-card">
-                            <div class="ti icon-da">Da</div>
-                            <div>
-                                <p class="tn">DaVinci Resolve</p>
-                                <p class="td">Color grading &amp; finishing</p>
-                            </div>
-                        </div>
-                        <div class="tool-card">
-                            <div class="ti icon-au">Au</div>
-                            <div>
-                                <p class="tn">Adobe Audition</p>
-                                <p class="td">Sound design &amp; audio mix</p>
-                            </div>
-                        </div>
-                        <div class="tool-card">
-                            <div class="ti icon-ps">Ps</div>
-                            <div>
-                                <p class="tn">Photoshop</p>
-                                <p class="td">Graphics &amp; thumbnail design</p>
-                            </div>
-                        </div>
-                        <div class="tool-card">
-                            <div class="ti icon-bl">Bl</div>
-                            <div>
-                                <p class="tn">Blender 3D</p>
-                                <p class="td">3D elements &amp; spatial design</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skills-aside reveal-up" style="--delay:0.2s">
-                        <div class="s-stats">
-                            <div class="s-stat"><span class="s-num">5+</span><span class="s-lbl">Years Editing</span>
-                            </div>
-                            <div class="s-stat"><span class="s-num">50+</span><span class="s-lbl">Projects</span></div>
-                        </div>
-                        <div>
-                            <p class="spec-label">Specializations</p>
-                            <ul class="spec-list">
-                                <li>Cinematic Color Grading</li>
-                                <li>Motion Graphics &amp; VFX</li>
-                                <li>Sound Design &amp; Audio Mix</li>
-                                <li>YouTube Storytelling</li>
-                                <li>Short Film &amp; Documentary</li>
-                                <li>Commercial &amp; Brand Edits</li>
-                            </ul>
-                        </div>
-                    </div>
+                <p class="skills-intro">Every tool chosen with intent.<br/>Every workflow serves the story.</p>
+              </div>
+
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <div class="ti icon-pr">Pr</div>
+                  <div>
+                    <p class="tn">Premiere Pro</p>
+                    <p class="td">My main weapon. Where I basically live now.</p>
+                  </div>
                 </div>
+                <div class="tool-card">
+                  <div class="ti icon-ae">Ae</div>
+                  <div>
+                    <p class="tn">After Effects</p>
+                    <p class="td">Where deadlines come to die. Parampara, Pratishtha, Anushasan.</p>
+                  </div>
+                </div>
+                <div class="tool-card">
+                  <div class="ti icon-cv">Cv</div>
+                  <div>
+                    <p class="tn">Canva</p>
+                    <p class="td">For when Photoshop feels like overkill. So, often.</p>
+                  </div>
+                </div>
+                <div class="tool-card">
+                  <div class="ti icon-fi">Fi</div>
+                  <div>
+                    <p class="tn">Figma</p>
+                    <p class="td">For pretending I plan things.</p>
+                  </div>
+                </div>
+                <div class="tool-card">
+                  <div class="ti icon-hg">Hg</div>
+                  <div>
+                    <p class="tn">Higgsfield</p>
+                    <p class="td">For the shots my brain cooks up but can't shoot. Yet.</p>
+                  </div>
+                </div>
+                <div class="tool-card">
+                  <div class="ti icon-ps">Ps</div>
+                  <div>
+                    <p class="tn">Photoshop</p>
+                    <p class="td">Only when I really really have to. We have history.</p>
+                  </div>
+                </div>
+                <div class="tool-card">
+                  <div class="ti icon-oi">OI</div>
+                  <div>
+                    <p class="tn">Organic Intelligence</p>
+                    <p class="td">Because AI isn't always the answer. Sometimes I just think.</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </section>
 
 
+        <!-- ════ PRESS NIGHT ════ -->
+        <section class="press">
+          <div class="wrap">
+            <div class="sec-head row">
+              <div class="lead">
+                <span class="sec-eyebrow">★ Press Night</span>
+                <h2 class="sec-title">What They're Saying.</h2>
+                <p class="sec-lead">An entirely real compilation of acclaim from across the universe. (No, really. Most of them.)</p>
+              </div>
+              <div class="meta-badge">★ AUDIENCE SCORE · 97%</div>
+            </div>
+
+            <div class="press-grid">
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"That was beautiful, beta. Did you eat lunch?"</blockquote>
+                <cite>— His Mother, after her 4th watch</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★☆☆☆</div>
+                <blockquote>"Render failed at 87%. Would humbly request he upgrade my RAM."</blockquote>
+                <cite>— His Laptop, in stoic protest</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Watched at 2 AM. Felt seen. Did not sleep. Worth it."</blockquote>
+                <cite>— Anonymous YouTube Commenter #1847</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"His best work yet. Genuinely moving stuff."</blockquote>
+                <cite>— Hans, the houseplant (cannot read)</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Cried at the cut at 02:14. Started over. Cried again."</blockquote>
+                <cite>— A viewer who refuses to be named</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★☆</div>
+                <blockquote>"He edited my Reel and now my mother thinks I'm successful."</blockquote>
+                <cite>— Anonymous client, lightly paraphrased</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Friendly neighborhood storyteller. He shoots, he edits, he saves the timeline. With great filters comes great responsibility."</blockquote>
+                <cite>— A wall-crawling fan, Queens NY</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"He made me an edit I couldn't refuse. A real consigliere of the cut."</blockquote>
+                <cite>— An anonymous Don, family business</cite>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <blockquote>"World's Best Editor. Mug pending. Also — identity theft is not a joke when you're this good."</blockquote>
+                <cite>— A certain Regional Manager, Scranton Branch · Paper Co.</cite>
+              </div>
+            </div>
+
+            <div class="press-disclaimer">
+              ✸ Reviews compiled from a sample size of one houseplant, one MacBook, and several humans of varying credibility. Star ratings are correct as of the last good edit.
+            </div>
+          </div>
+        </section>
+
     </main>
 
-    <!-- ─── FOOTER ──────────────────────────────────────────── -->
-    <footer id="contact" class="site-footer">
-        <div class="footer-strip">
-            <div class="ticker-track">
-                <span>PROJECTS ARE STORIES WAITING TO BE TOLD &nbsp;•&nbsp; PROJECTS ARE STORIES WAITING TO BE TOLD
-                    &nbsp;•&nbsp; </span>
-                <span aria-hidden="true">PROJECTS ARE STORIES WAITING TO BE TOLD &nbsp;•&nbsp; PROJECTS ARE STORIES
-                    WAITING TO BE TOLD &nbsp;•&nbsp; </span>
-            </div>
-        </div>
-        <div class="footer-body wrap">
-            <div class="text-c reveal-up">
-                <span class="eyebrow footer-eyebrow">Let's Work Together</span>
-                <h2 class="footer-h">READY TO SCULPT<br>YOUR STORY?</h2>
-                <div class="footer-email-row">
-                    <a href="mailto:shriparthc05@gmail.com" class="btn btn-dark footer-email-btn">
-                        <span class="email-icon">✉</span>
-                        <span>shriparthc05@gmail.com</span>
-                    </a>
-                </div>
-            </div>
-            <div class="social-row reveal-up" style="--delay:0.1s">
-                <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-tile st-ig">
-                    <span class="st-abbr">IG</span><span class="st-name">Instagram</span><span class="st-arrow">↗</span>
-                </a>
-                <a href="https://youtube.com/@kahihihashrii?si=vaoKU4twYvR9PgiY" target="_blank" rel="noopener"
-                    class="social-tile st-yt">
-                    <span class="st-abbr">YT</span><span class="st-name">YouTube</span><span class="st-arrow">↗</span>
-                </a>
-                <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-tile st-in">
-                    <span class="st-abbr">IN</span><span class="st-name">X (Twitter)</span><span
-                        class="st-arrow">↗</span>
-                </a>
-            </div>
-            <div class="footer-credits">
-                <p class="cr-copy">© 2026 SHRIPARTH | ALL RIGHTS RESERVED</p>
-                <p class="cr-tag">Design & Developed by &nbsp; <a href="https://sohamkachale.netlify.app/">Soham Kachale</a></p>
+    <!-- ════ SMPTE BARS ════ -->
+    <div class="smpte">
+      <div class="bars">
+        <span style="background:#F4F0E6"></span>
+        <span style="background:#E8B800"></span>
+        <span style="background:#5ea3e0"></span>
+        <span style="background:#1A9E5C"></span>
+        <span style="background:#B8A9FA"></span>
+        <span style="background:#C0392B"></span>
+        <span style="background:#2563A8"></span>
+        <span style="background:#000"></span>
+      </div>
+      <div class="lbl">— End Of Transmission —</div>
+      <div class="sub">Stand by · Credits to follow · 1 kHz tone (just kidding)</div>
+    </div>
 
-            </div>
+    <!-- ════ END CREDITS ════ -->
+    <footer>
+      <div class="wrap">
+        <div class="credits-head">
+          <div class="label">— End Credits —</div>
+          <h3>A SHRIPARTH JOINT.</h3>
         </div>
+
+        <div class="credits">
+          <div class="credit-row"><span class="role">Directed By</span><span class="name">Shriparth C.</span></div>
+          <div class="credit-row"><span class="role">Coffee Department</span><span class="name">The Lukewarm Mug</span></div>
+          <div class="credit-row"><span class="role">Chief Consigliere</span><span class="name">3 AM Inspiration</span></div>
+          <div class="credit-row"><span class="role">Department of Doubt</span><span class="name">Me, Myself and I (on a loop)</span></div>
+          <div class="credit-row"><span class="role">Arch Nemesis</span><span class="name">"Export Failed — Disk Full"</span></div>
+          <div class="credit-row"><span class="role">Creature FX</span><span class="name">Deadline Anxiety</span></div>
+          <div class="credit-row"><span class="role">Best Boy</span><span class="name">Shortcut Keys</span></div>
+          <div class="credit-row"><span class="role">Supervising Producer</span><span class="name">Procrastination (uncredited)</span></div>
+          <div class="credit-row"><span class="role">Catering</span><span class="name">Maggi · 2 AM Variant</span></div>
+          <div class="credit-row"><span class="role">Stunt Coordinator</span><span class="name">Save File Often (in loving memory)</span></div>
+          <div class="credit-row"><span class="role">Director's Mentor</span><span class="name">Obi-Wan-Adjacent Energy</span></div>
+          <div class="credit-row"><span class="role">Wingman</span><span class="name">Goose, Memorial Reel</span></div>
+          <div class="credit-row"><span class="role">Power Level Auditor</span><span class="name">Confirmed Over 9000</span></div>
+        </div>
+
+        <div class="credits-meta">
+          <div class="l">— Special Thanks —</div>
+          <p>
+            The directors who taught us that time can be rearranged.<br />
+            The composers who proved silence is a key.<br />
+            The wall-crawlers who reminded us responsibility scales with power.<br />
+            The Jedi (and the Sith) who taught us patience comes before precision.<br />
+            The dark knights who answered the signal at 3:47 AM.<br />
+            The games that made us cry at 3 AM.<br />
+            And every fictional character who quietly ruined us.
+          </p>
+        </div>
+
+        <div class="foot-bot">
+          <span>© 2026 SHRIPARTH · ALL RIGHTS RESERVED · NO ANIMALS HARMED</span>
+          <span>Design & Developed by &nbsp; <a href="https://sohamkachale.netlify.app/">Soham Kachale</a></span>
+        </div>
+      </div>
     </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"><b>✦</b><span id="toastText">…</span></div>
 
     <!-- ─── VIDEO MODAL — Cinematic Hero Dialog ───────────── -->
     <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
@@ -952,6 +1178,104 @@
     <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
     <script src="script.js?v=15"></script>
     <script async src="//www.instagram.com/embed.js"></script>
+
+    <!-- ─── V11 DIRECTORS CUT SCRIPTS ───────────────────── -->
+    <script>
+        /* Pre-loader */
+        (function(){
+          const countdown=document.getElementById('countdown');
+          const loader=document.getElementById('loader');
+          if (countdown && loader) {
+              const msg=document.getElementById('loaderMsg');
+              const phases=['3','2','1','ACTION'];
+              const msgs=['ROLLING · SOUND · SPEED','CAMERA HOT · LIGHTS UP','MARKERS IN POSITION','— ACTION —'];
+              let i=0;countdown.textContent=phases[0];msg.textContent=msgs[0];
+              const tick=setInterval(()=>{
+                i++;
+                if(i>=phases.length){clearInterval(tick);setTimeout(()=>loader.classList.add('gone'),400);return;}
+                countdown.textContent=phases[i];msg.textContent=msgs[i];
+              },650);
+              setTimeout(()=>loader.classList.add('gone'),4000);
+          }
+        })();
+
+        /* Live timecode */
+        (function(){
+          const el=document.getElementById('tc');const t0=Date.now();
+          if (el) {
+              function tick(){
+                const ms=Date.now()-t0;
+                const h=String(Math.floor(ms/3600000)%100).padStart(2,'0');
+                const m=String(Math.floor(ms/60000)%60).padStart(2,'0');
+                const s=String(Math.floor(ms/1000)%60).padStart(2,'0');
+                const f=String(Math.floor((ms%1000)/(1000/24))).padStart(2,'0');
+                el.textContent=`${h}:${m}:${s}:${f}`;
+                requestAnimationFrame(tick);
+              }
+              tick();
+          }
+        })();
+
+        /* Subtitle rotator */
+        (function(){
+          const lines=[
+            '[ MUSIC SWELLS ]',
+            '[ CAMERA LINGERS ON FACE ]',
+            '[ HIGH GROUND ACQUIRED ]',
+            '[ DISTANT CINEMATIC HUM ]',
+            '[ BAT-SIGNAL OVERHEAD ]',
+            '[ KEYBOARD CLICKS, RAPID ]',
+            '[ NEED FOR SPEED — FELT ]',
+            '[ COFFEE MUG SET DOWN, GENTLY ]',
+            '[ POWER LEVEL: SCANNING… 9001+ ]',
+            '[ SILENCE — LONG ]',
+            '[ PIVOT! PIVOT! ]',
+            '[ INDISTINCT VIDEO ESSAY ]',
+            '[ DEAR DIARY — THE EDIT ATE THE NIGHT ]',
+            '[ DRAMATIC PAUSE ]',
+            '[ SHUTTER CLICKS ]',
+            '[ FOOTSTEPS, APPROACHING ]'
+          ];
+          const el=document.getElementById('subText');
+          if (el) {
+              let i=0;
+              setInterval(()=>{
+                el.classList.add('fade');
+                setTimeout(()=>{
+                  i=(i+1)%lines.length;
+                  el.textContent=lines[i];
+                  el.classList.remove('fade');
+                },350);
+              },4200);
+          }
+        })();
+
+        /* Toast & Easter Eggs */
+        const toast=document.getElementById('toast');
+        const toastText=document.getElementById('toastText');
+        let toastTimer;
+        function showToast(text,ms=3000){
+          if(toastText) toastText.textContent=text;
+          if(toast) toast.classList.add('show');
+          clearTimeout(toastTimer);
+          toastTimer=setTimeout(()=>{if(toast) toast.classList.remove('show')},ms);
+        }
+
+        const konami=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','KeyB','KeyA'];
+        let kIdx=0;
+        window.addEventListener('keydown',(e)=>{
+          if(e.code===konami[kIdx]){
+            kIdx++;
+            if(kIdx===konami.length){
+              showToast('GOD MODE · All cuts now make sense.',4500);
+              document.body.style.transition='filter .4s';
+              document.body.style.filter='hue-rotate(25deg) saturate(1.15)';
+              setTimeout(()=>document.body.style.filter='',4500);
+              kIdx=0;
+            }
+          } else { kIdx=0; }
+        });
+    </script>
 
     <!-- ─── BULLETPROOF BUTTON FIX ──────────────────────── -->
     <script>
