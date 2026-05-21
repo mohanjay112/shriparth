@@ -631,6 +631,13 @@ gsap.from('.social-tile', {
 
 
 
+// ── Press Section Animation ─────────────────────────────
+gsap.from('.review', {
+    scrollTrigger: { trigger: '.press-grid', start: 'top 85%' },
+    y: 40, autoAlpha: 0, stagger: 0.15,
+    duration: 0.7, ease: 'power3.out',
+});
+
 // ── Video registry ────────────────────────────────────────
 const videoMeta = {
     featured1: { id: '1NInV19MR3Q', type: 'youtube', title: 'Silence Between Frames',
@@ -1381,34 +1388,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(philoForm);
 
             try {
-                const response = await fetch(philoForm.getAttribute('action'), {
+                // Submit to Netlify (root path)
+                const response = await fetch('/', {
                     method: 'POST',
-                    body: formData
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
                 });
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
-                const result = await response.json();
-                console.log('Server response:', result);
-
-                if (result.success) {
-                    // Success state
-                    btn.textContent = 'Message Sent!';
-                    btn.style.background = 'var(--green)';
-                    btn.style.opacity = '1';
-                    philoForm.reset();
-                    
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.style.background = '';
-                        btn.disabled = false;
-                    }, 4000);
-                } else {
-                    // Error state from server
-                    throw new Error(result.message || 'Something went wrong.');
-                }
+                // Success state
+                btn.textContent = 'Message Sent!';
+                btn.style.background = 'var(--green)';
+                btn.style.opacity = '1';
+                philoForm.reset();
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
             } catch (error) {
                 console.error('Submission Error:', error);
                 btn.textContent = 'Error! Try Again';

@@ -15,7 +15,7 @@ img, video { max-width: 100%; height: auto; display: block; }
     --c1: #EAE5D8;
     --c2: #E0DAC9;
     --c3: #D5CEBC;
-    --ink:  #1F1C18;
+    --ink:  #000000;
     --ink2: #524D47;
     --ink3: #6b6560;
     --yellow: #E8B800;
@@ -24,7 +24,7 @@ img, video { max-width: 100%; height: auto; display: block; }
     --blue:   #2563A8;
     --blue-light: #5ea3e0;
     --green:  #1A9E5C;
-    --dark:   #18150F;
+    --dark:   #000000;
     --light:  #FAF8F3;
     --b0: rgba(31,28,24,0.07);
     --b1: rgba(31,28,24,0.14);
@@ -325,14 +325,14 @@ body.modal-open .cursor-dot {
     padding: 1.1rem 2.5rem;
     display: flex; justify-content: space-between; align-items: center;
     z-index: 500;
-    background: rgba(244,240,230,0.96);
+    background: var(--yellow);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-bottom: 1.5px solid var(--ink);
     transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 .site-header.scrolled {
     padding: 0.75rem 2.5rem;
-    background: rgba(244,240,230,0.99);
+    background: var(--yellow);
     box-shadow: 0 4px 24px rgba(31,28,24,0.10);
 }
 .site-header::before, .site-header::after {

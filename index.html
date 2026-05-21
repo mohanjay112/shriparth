@@ -197,9 +197,38 @@
           letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           SMPTE BARS
+           ═══════════════════════════════════════════════════════════════ */
+        .smpte{background:var(--ink);padding:1.6rem 0 1.2rem;border-top:var(--b-thick);border-bottom:var(--b-thick)}
+        .smpte .bars{display:grid;grid-template-columns:repeat(8,1fr);height:72px;border-top:2px solid var(--c0);border-bottom:2px solid var(--c0);margin-bottom:0.9rem}
+        .smpte .bars span{border-right:1px solid rgba(0,0,0,.2)}
+        .smpte .bars span:last-child{border-right:none}
+        .smpte .lbl{text-align:center;color:var(--yellow);font-family:var(--fm);font-size:0.78rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase}
+        .smpte .sub{text-align:center;color:var(--c0);font-family:var(--fm);font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.35rem;opacity:.6}
+
+        /* ═══════════════════════════════════════════════════════════════
+           END CREDITS
+           ═══════════════════════════════════════════════════════════════ */
+        footer{background:var(--ink);color:var(--c0);padding:3rem 0 1.5rem}
+        .credits-head{text-align:center;margin-bottom:2.6rem;border-top:3px dashed var(--c0);border-bottom:3px dashed var(--c0);padding:1.6rem 0}
+        .credits-head .label{font-family:var(--fm);font-size:0.7rem;font-weight:700;letter-spacing:0.3em;color:var(--yellow);margin-bottom:0.5rem}
+        .credits-head h3{font-family:var(--fh);font-size:clamp(2rem,5vw,3.6rem);color:var(--c0);letter-spacing:0.005em;line-height:1}
+        .credits{max-width:760px;margin:0 auto 2.6rem;display:grid;gap:0.85rem}
+        .credit-row{display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;padding:0.45rem 0;align-items:baseline;font-family:var(--fm);font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+        .credit-row .role{color:var(--yellow);text-align:right;border-right:2px solid rgba(244,240,230,.18);padding-right:1.8rem}
+        .credit-row .name{color:var(--c0)}
+        .credits-meta{text-align:center;margin:2.6rem auto;padding:1.7rem 1.5rem;border:3px solid var(--yellow);max-width:680px}
+        .credits-meta .l{font-family:var(--fm);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--yellow);margin-bottom:0.9rem}
+        .credits-meta p{font-family:var(--fb);font-size:0.95rem;font-weight:500;line-height:1.6;color:var(--c0)}
+        .foot-bot{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:space-between;align-items:center;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;border-top:2px solid rgba(244,240,230,.18);padding-top:1.4rem;color:rgba(244,240,230,.7)}
+        .foot-bot a{color:var(--yellow)}
+
         @media (max-width:1000px){
           .press-grid{grid-template-columns:repeat(2,1fr)}
           .slate-card{transform:rotate(0deg);width:100%;min-width:0}
+          .credit-row{grid-template-columns:1fr;gap:0.25rem;text-align:center}
+          .credit-row .role{text-align:center;border-right:none;padding-right:0;border-bottom:1px dashed rgba(244,240,230,.18);padding-bottom:0.3rem}
         }
         @media (max-width:640px){
           .press-grid{grid-template-columns:1fr}
@@ -207,6 +236,7 @@
           .countdown{font-size:clamp(48px,14vw,72px)}
           .hero-title .underline::before{font-size:9px;top:-18px}
           .hero-grid { grid-template-columns: 1fr; }
+          .smpte .bars{height:48px}
         }
     </style>
 </head>
@@ -866,7 +896,8 @@
                         <h2 class="philo-contact-title">Let’s Work Together</h2>
                         <p class="philo-contact-sub">Turning raw vision into cinematic rhythm.</p>
                     </div>
-                    <form class="philo-form" id="contact-form" action="sendmail.php" method="POST">
+                    <form class="philo-form" id="contact-form" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
