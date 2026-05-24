@@ -542,16 +542,19 @@
         flex: none !important;
     }
     .feat-stats {
-        flex-direction: column !important;
-        gap: 1.25rem !important;
-        padding: 1.25rem !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
         align-items: center !important;
+        padding: 1rem 0.5rem !important;
     }
     .fs-divider {
-        display: none !important;
+        display: block !important;
+        height: 28px !important;
     }
     .fs-item {
-        width: 100% !important;
+        flex: 1 !important;
+        width: auto !important;
         text-align: center !important;
     }
 }

@@ -54,205 +54,801 @@
                 visibility: visible !important;
                 transform: none !important;
             }
+
+            /* Custom hover for mail buttons */
+            .custom-mail-btn:hover {
+                color: var(--ink) !important;
+                background: var(--yellow-soft) !important;
+                border-color: var(--yellow-soft) !important;
+            }
+
+            .custom-mail-link:hover {
+                color: var(--paper) !important;
+                border-bottom-color: var(--paper) !important;
+            }
         </style>
     </noscript>
-    
+
     <style>
         /* ── MISSING VARS FOR V11 SECTIONS ── */
         :root {
-          --paper: #FFFCF4;
-          --yellow-soft: #FFD23F;
-          --red-soft: #E55934;
-          --lavender: #B8A9FA;
-          --b-thin: 2px solid var(--ink);
-          --b: 3px solid var(--ink);
-          --b-thick: 5px solid var(--ink);
-          --fm: 'Space Mono', monospace;
-          --fhero: 'Syne', sans-serif;
+            --paper: #FFFCF4;
+            --yellow-soft: #FFD23F;
+            --red-soft: #E55934;
+            --lavender: #B8A9FA;
+            --b-thin: 2px solid var(--ink);
+            --b: 3px solid var(--ink);
+            --b-thick: 5px solid var(--ink);
+            --fm: 'Space Mono', monospace;
+            --fhero: 'Syne', sans-serif;
         }
 
         /* ═══════════════════════════════════════════════════════════════
            PRE-LOADER & STATUS BAR
            ═══════════════════════════════════════════════════════════════ */
-        .loader{position:fixed;inset:0;z-index:9999;background:var(--ink) !important;color:var(--c0) !important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-family:var(--fm);transition:opacity .6s ease, visibility .6s; transform: none !important;}
-        .loader.gone{opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}
-        .l-slate{width:min(360px,80vw);border:5px solid var(--c0) !important;background:var(--c0) !important;color:var(--ink) !important;overflow:hidden}
-        .l-slate .clap-bar{height:20px;background-image:repeating-linear-gradient(135deg,var(--ink) 0 18px,var(--c0) 18px 36px) !important;border-bottom:3px solid var(--ink) !important}
-        .l-slate-header{padding:9px 16px;background:var(--ink) !important;color:var(--c0) !important;font-family:var(--fm);font-weight:700;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:3px solid var(--ink) !important}
-        .l-slate-body{padding:14px 16px;display:grid;gap:5px}
-        .l-slate-row{display:grid;grid-template-columns:auto 1fr;gap:12px;font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
-        .l-slate-row b{color:#666}
-        .countdown{font-family:var(--fhero);font-weight:800;font-size:clamp(56px,9vw,92px);line-height:1;color:var(--yellow);text-shadow:5px 5px 0 var(--ink)}
-        .loader-msg{font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--c0)}
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--ink) !important;
+            color: var(--c0) !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-family: var(--fm);
+            transition: opacity .6s ease, visibility .6s;
+            transform: none !important;
+        }
 
-        .statbar{background:var(--ink);color:var(--c0);padding:8px 2.5rem;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
-        .statbar .rec{display:flex;align-items:center;gap:8px;color:var(--red-soft)}
-        .statbar .rec::before{content:"";width:9px;height:9px;background:var(--red-soft);border-radius:50%;animation:blink 1.2s infinite;flex-shrink:0}
-        .statbar .tc{color:var(--yellow);font-variant-numeric:tabular-nums}
-        @keyframes blink{0%,40%,100%{opacity:1}50%{opacity:.15}}
+        .loader.gone {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        .l-slate {
+            width: min(360px, 80vw);
+            border: 5px solid var(--c0) !important;
+            background: var(--c0) !important;
+            color: var(--ink) !important;
+            overflow: hidden
+        }
+
+        .l-slate .clap-bar {
+            height: 20px;
+            background-image: repeating-linear-gradient(135deg, var(--ink) 0 18px, var(--c0) 18px 36px) !important;
+            border-bottom: 3px solid var(--ink) !important
+        }
+
+        .l-slate-header {
+            padding: 9px 16px;
+            background: var(--ink) !important;
+            color: var(--c0) !important;
+            font-family: var(--fm);
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--ink) !important
+        }
+
+        .l-slate-body {
+            padding: 14px 16px;
+            display: grid;
+            gap: 5px
+        }
+
+        .l-slate-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            font-family: var(--fm);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase
+        }
+
+        .l-slate-row b {
+            color: #666
+        }
+
+        .countdown {
+            font-family: var(--fhero);
+            font-weight: 800;
+            font-size: clamp(56px, 9vw, 92px);
+            line-height: 1;
+            color: var(--yellow);
+            text-shadow: 5px 5px 0 var(--ink)
+        }
+
+        .loader-msg {
+            font-family: var(--fm);
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--c0)
+        }
+
+        .statbar {
+            background: var(--ink);
+            color: var(--c0);
+            padding: 8px 2.5rem;
+            font-family: var(--fm);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .statbar .rec {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--red-soft)
+        }
+
+        .statbar .rec::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            background: var(--red-soft);
+            border-radius: 50%;
+            animation: blink 1.2s infinite;
+            flex-shrink: 0
+        }
+
+        .statbar .tc {
+            color: var(--yellow);
+            font-variant-numeric: tabular-nums
+        }
+
+        @keyframes blink {
+
+            0%,
+            40%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .15
+            }
+        }
 
         /* ═══════════════════════════════════════════════════════════════
            HERO
            ═══════════════════════════════════════════════════════════════ */
-        .hero{
-          position:relative;
-          padding:3rem 0 0;
-          background:
-            repeating-linear-gradient(0deg,transparent 0 39px,rgba(0,0,0,.06) 39px 40px),
-            repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,0,0,.06) 39px 40px),
-            var(--c0) !important;
-          overflow:hidden;
-          border-bottom:var(--b-thick);
-          min-height: auto !important;
-        }
-        .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin:1.4rem 0 2rem}
-        .tag{
-          font-family:var(--fm);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
-          padding:6px 12px;border:var(--b-thin);background:var(--paper);
-          display:inline-flex;align-items:center;gap:8px;color:var(--ink);
-        }
-        .tag .dot{width:8px;height:8px;background:var(--red-soft);border-radius:50%;animation:blink 1.4s infinite;flex-shrink:0}
-        .tag.gold{background:var(--yellow-soft)}
-
-        .hero-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:1.5rem}
-        .hero-title{
-          font-family:var(--fhero) !important;font-weight:800 !important;
-          font-size:clamp(56px,11vw,156px) !important;line-height:0.86 !important;letter-spacing:-0.04em !important;
-          text-transform:uppercase;
-          margin:6px 0 4px !important;
-          color: var(--ink) !important;
-        }
-        .hero-title .underline{
-          background:var(--yellow-soft);padding:0 0.05em;border:var(--b);
-          display:inline-block;transform:rotate(-1.5deg);box-shadow:var(--bs2);
-          margin:0 4px;position:relative;
-        }
-        .hero-title .underline::before{
-          content:"VOL. I";position:absolute;top:-22px;right:-12px;
-          background:var(--ink);color:var(--c0);padding:3px 7px;
-          font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:0.14em;
-          transform:rotate(8deg);border:2px solid var(--ink);
-          text-transform:uppercase;
+        .hero {
+            position: relative;
+            padding: 3rem 0 0;
+            background:
+                repeating-linear-gradient(0deg, transparent 0 39px, rgba(0, 0, 0, .06) 39px 40px),
+                repeating-linear-gradient(90deg, transparent 0 39px, rgba(0, 0, 0, .06) 39px 40px),
+                var(--c0) !important;
+            overflow: hidden;
+            border-bottom: var(--b-thick);
+            min-height: auto !important;
         }
 
-        .slate-card{
-          border:var(--b);background:var(--paper);box-shadow:var(--bs3);
-          min-width:280px;transform:rotate(2deg);overflow:hidden;align-self:end;
-        }
-        .slate-card .clap-bar{height:18px;background-image:repeating-linear-gradient(135deg,var(--ink) 0 14px,var(--yellow-soft) 14px 28px);border-bottom:var(--b)}
-        .slate-card .sc-top{padding:8px 14px;background:var(--ink);color:var(--c0);font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:var(--b)}
-        .slate-card .sc-body{padding:14px;display:grid;gap:8px}
-        .slate-card .sc-row{font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:grid;grid-template-columns:auto 1fr;gap:10px;color:var(--ink)}
-        .slate-card .sc-row b{color:#777;font-weight:700}
-
-        .hero-sub{
-          font-family:var(--fb);font-weight:500;
-          font-size:clamp(17px,1.8vw,22px);
-          max-width:680px;margin-bottom:2rem;line-height:1.4;color:var(--ink);
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.4rem 0 2rem
         }
 
-        .cta-row{display:flex;flex-wrap:wrap;gap:14px;padding-bottom:4.5rem}
-        .btn.primary{background:var(--ink);color:var(--c0)}
-        .btn.gold{background:var(--yellow-soft)}
-        .btn .arrow{display:inline-block;transition:transform .15s}
-        .btn:hover .arrow{transform:translateX(4px)}
-
-        .subs{
-          background:var(--ink);color:var(--c0);
-          padding:10px 24px;text-align:center;
-          font-family:var(--fm);font-weight:700;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+        .tag {
+            font-family: var(--fm);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border: var(--b-thin);
+            background: var(--paper);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--ink);
         }
-        #subText{display:inline-block;transition:opacity .35s ease}
-        #subText.fade{opacity:0}
+
+        .tag .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--red-soft);
+            border-radius: 50%;
+            animation: blink 1.4s infinite;
+            flex-shrink: 0
+        }
+
+        .tag.gold {
+            background: var(--yellow-soft)
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: end;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-title {
+            font-family: var(--fhero) !important;
+            font-weight: 800 !important;
+            font-size: clamp(56px, 11vw, 156px) !important;
+            line-height: 0.86 !important;
+            letter-spacing: -0.04em !important;
+            text-transform: uppercase;
+            margin: 6px 0 4px !important;
+            color: var(--ink) !important;
+        }
+
+        .hero-title .underline {
+            background: var(--yellow-soft);
+            padding: 0 0.05em;
+            border: var(--b);
+            display: inline-block;
+            transform: rotate(-1.5deg);
+            box-shadow: var(--bs2);
+            margin: 0 4px;
+            position: relative;
+        }
+
+        .hero-title .underline::before {
+            content: "VOL. I";
+            position: absolute;
+            top: -22px;
+            right: -12px;
+            background: var(--ink);
+            color: var(--c0);
+            padding: 3px 7px;
+            font-family: var(--fm);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            transform: rotate(8deg);
+            border: 2px solid var(--ink);
+            text-transform: uppercase;
+        }
+
+        .slate-card {
+            border: var(--b);
+            background: var(--paper);
+            box-shadow: var(--bs3);
+            min-width: 280px;
+            transform: rotate(2deg);
+            overflow: hidden;
+            align-self: end;
+        }
+
+        .slate-card .clap-bar {
+            height: 18px;
+            background-image: repeating-linear-gradient(135deg, var(--ink) 0 14px, var(--yellow-soft) 14px 28px);
+            border-bottom: var(--b)
+        }
+
+        .slate-card .sc-top {
+            padding: 8px 14px;
+            background: var(--ink);
+            color: var(--c0);
+            font-family: var(--fm);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: var(--b)
+        }
+
+        .slate-card .sc-body {
+            padding: 14px;
+            display: grid;
+            gap: 8px
+        }
+
+        .slate-card .sc-row {
+            font-family: var(--fm);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px;
+            color: var(--ink)
+        }
+
+        .slate-card .sc-row b {
+            color: #777;
+            font-weight: 700
+        }
+
+        .hero-sub {
+            font-family: var(--fb);
+            font-weight: 500;
+            font-size: clamp(17px, 1.8vw, 22px);
+            max-width: 680px;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            color: var(--ink);
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            padding-bottom: 4.5rem
+        }
+
+        .btn.primary {
+            background: var(--ink);
+            color: var(--c0)
+        }
+
+        .btn.gold {
+            background: var(--yellow-soft)
+        }
+
+        .btn .arrow {
+            display: inline-block;
+            transition: transform .15s
+        }
+
+        .btn:hover .arrow {
+            transform: translateX(4px)
+        }
+
+        .subs {
+            background: var(--ink);
+            color: var(--c0);
+            padding: 10px 24px;
+            text-align: center;
+            font-family: var(--fm);
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        #subText {
+            display: inline-block;
+            transition: opacity .35s ease
+        }
+
+        #subText.fade {
+            opacity: 0
+        }
 
         /* ═══════════════════════════════════════════════════════════════
            PRESS NIGHT
            ═══════════════════════════════════════════════════════════════ */
-        .press{background:var(--lavender);border-top:var(--b-thick);border-bottom:var(--b-thick);padding:5rem 0}
-        .press .sec-title{color:var(--ink) !important; font-family: var(--fh) !important; text-shadow: 4px 4px 0 var(--yellow-soft) !important; font-size: clamp(2.5rem, 5.5vw, 4.5rem) !important;}
-        .press .sec-title::after{display:none}
-        .press .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.5rem}
-        .press .lead{max-width:620px}
-        .press .meta-badge{
-          font-family:var(--fm);font-size:0.7rem;font-weight:700;
-          letter-spacing:0.14em;text-transform:uppercase;
-          padding:0.55rem 0.95rem;border:var(--b);background:var(--paper);
-          box-shadow:var(--bs2);color:var(--ink);
-          transform: rotate(-1.5deg);
+        .press {
+            background: var(--lavender);
+            border-top: var(--b-thick);
+            border-bottom: var(--b-thick);
+            padding: 5rem 0
         }
-        .press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.8rem}
-        .review{
-          border:var(--b);background:var(--paper);box-shadow:var(--bs2);
-          padding:1.6rem;display:flex;flex-direction:column;gap:1rem;
-          transition:transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.3s ease;
-          position: relative;
+
+        .press .sec-title {
+            color: var(--ink) !important;
+            font-family: var(--fh) !important;
+            text-shadow: 4px 4px 0 var(--yellow-soft) !important;
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem) !important;
         }
-        .review:nth-child(odd){transform:rotate(-1deg)}
-        .review:nth-child(even){transform:rotate(1.2deg)}
-        .review:hover{transform:translate(-6px,-6px) rotate(0deg) scale(1.02) !important;box-shadow:10px 10px 0 var(--ink) !important;z-index:10}
-        .review:nth-child(4n+1){background:#FFFCF4}
-        .review:nth-child(4n+2){background:#EAE6FF}
-        .review:nth-child(4n+3){background:#FFF4D2}
-        .review:nth-child(4n+4){background:#FFEBE7}
-        .review-top{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.1rem}
-        .review-badge{font-family:var(--fm);font-size:0.58rem;font-weight:700;letter-spacing:1px;padding:3px 8px;border:1.5px solid var(--ink);border-radius:4px;box-shadow:2px 2px 0 var(--ink);text-transform:uppercase}
-        .badge-lavender{background:var(--lavender);color:var(--ink)}
-        .badge-red{background:var(--red-soft);color:var(--paper)}
-        .badge-blue{background:#5ea3e0;color:var(--paper)}
-        .badge-green{background:#1A9E5C;color:var(--paper)}
-        .badge-yellow{background:var(--yellow-soft);color:var(--ink)}
-        .review .stars{color:#E8B800;text-shadow:1px 1px 0 var(--ink);font-size:1.15rem;font-family:var(--fh);line-height:1}
-        .review blockquote{font-family:var(--fb);font-weight:700;font-size:1.05rem;line-height:1.5;color:var(--ink);border-left:none;padding-left:0;margin:0;position:relative;z-index:1}
-        .review blockquote::before{content:'“';font-family:var(--fh);font-size:2.8rem;color:rgba(25,22,18,0.08);position:absolute;top:-1.3rem;left:-0.6rem;z-index:-1}
-        .review cite{font-family:var(--fm);font-size:0.68rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;font-style:normal;color:var(--ink);margin-top:auto;opacity:0.8;display:flex;align-items:center;gap:6px}
-        .review cite::before{content:'🎬';font-size:0.75rem}
-        .press-disclaimer{
-          margin-top:2.5rem;padding:0.9rem 1.2rem;border:2px dashed var(--ink);
-          font-family:var(--fm);font-size:0.7rem;font-weight:700;
-          letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
-          background:rgba(255,255,255,0.4);
+
+        .press .sec-title::after {
+            display: none
+        }
+
+        .press .sec-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: end;
+            gap: 1.5rem
+        }
+
+        .press .lead {
+            max-width: 620px
+        }
+
+        .press .meta-badge {
+            font-family: var(--fm);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.55rem 0.95rem;
+            border: var(--b);
+            background: var(--paper);
+            box-shadow: var(--bs2);
+            color: var(--ink);
+            transform: rotate(-1.5deg);
+        }
+
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin-top: 2.8rem
+        }
+
+        .review {
+            border: var(--b);
+            background: var(--paper);
+            box-shadow: var(--bs2);
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.3s ease;
+            position: relative;
+        }
+
+        .review:nth-child(odd) {
+            transform: rotate(-1deg)
+        }
+
+        .review:nth-child(even) {
+            transform: rotate(1.2deg)
+        }
+
+        .review:hover {
+            transform: translate(-6px, -6px) rotate(0deg) scale(1.02) !important;
+            box-shadow: 10px 10px 0 var(--ink) !important;
+            z-index: 10
+        }
+
+        .review:nth-child(4n+1) {
+            background: #FFFCF4
+        }
+
+        .review:nth-child(4n+2) {
+            background: #EAE6FF
+        }
+
+        .review:nth-child(4n+3) {
+            background: #FFF4D2
+        }
+
+        .review:nth-child(4n+4) {
+            background: #FFEBE7
+        }
+
+        .review-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.1rem
+        }
+
+        .review-badge {
+            font-family: var(--fm);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border: 1.5px solid var(--ink);
+            border-radius: 4px;
+            box-shadow: 2px 2px 0 var(--ink);
+            text-transform: uppercase
+        }
+
+        .badge-lavender {
+            background: var(--lavender);
+            color: var(--ink)
+        }
+
+        .badge-red {
+            background: var(--red-soft);
+            color: var(--paper)
+        }
+
+        .badge-blue {
+            background: #5ea3e0;
+            color: var(--paper)
+        }
+
+        .badge-green {
+            background: #1A9E5C;
+            color: var(--paper)
+        }
+
+        .badge-yellow {
+            background: var(--yellow-soft);
+            color: var(--ink)
+        }
+
+        .review .stars {
+            color: #E8B800;
+            text-shadow: 1px 1px 0 var(--ink);
+            font-size: 1.15rem;
+            font-family: var(--fh);
+            line-height: 1
+        }
+
+        .review blockquote {
+            font-family: var(--fb);
+            font-weight: 700;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: var(--ink);
+            border-left: none;
+            padding-left: 0;
+            margin: 0;
+            position: relative;
+            z-index: 1
+        }
+
+        .review blockquote::before {
+            content: '“';
+            font-family: var(--fh);
+            font-size: 2.8rem;
+            color: rgba(25, 22, 18, 0.08);
+            position: absolute;
+            top: -1.3rem;
+            left: -0.6rem;
+            z-index: -1
+        }
+
+        .review cite {
+            font-family: var(--fm);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-style: normal;
+            color: var(--ink);
+            margin-top: auto;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .review cite::before {
+            content: '🎬';
+            font-size: 0.75rem
+        }
+
+        .press-disclaimer {
+            margin-top: 2.5rem;
+            padding: 0.9rem 1.2rem;
+            border: 2px dashed var(--ink);
+            font-family: var(--fm);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.4);
         }
 
         /* ═══════════════════════════════════════════════════════════════
            SMPTE BARS
            ═══════════════════════════════════════════════════════════════ */
-        .smpte{background:var(--ink);padding:1.6rem 0 1.2rem;border-top:var(--b-thick);border-bottom:var(--b-thick)}
-        .smpte .bars{display:grid;grid-template-columns:repeat(8,1fr);height:72px;border-top:2px solid var(--c0);border-bottom:2px solid var(--c0);margin-bottom:0.9rem}
-        .smpte .bars span{border-right:1px solid rgba(0,0,0,.2)}
-        .smpte .bars span:last-child{border-right:none}
-        .smpte .lbl{text-align:center;color:var(--yellow);font-family:var(--fm);font-size:0.78rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase}
-        .smpte .sub{text-align:center;color:var(--c0);font-family:var(--fm);font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.35rem;opacity:.6}
+        .smpte {
+            background: var(--ink);
+            padding: 1.6rem 0 1.2rem;
+            border-top: var(--b-thick);
+            border-bottom: var(--b-thick)
+        }
+
+        .smpte .bars {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            height: 72px;
+            border-top: 2px solid var(--c0);
+            border-bottom: 2px solid var(--c0);
+            margin-bottom: 0.9rem
+        }
+
+        .smpte .bars span {
+            border-right: 1px solid rgba(0, 0, 0, .2)
+        }
+
+        .smpte .bars span:last-child {
+            border-right: none
+        }
+
+        .smpte .lbl {
+            text-align: center;
+            color: var(--yellow);
+            font-family: var(--fm);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.32em;
+            text-transform: uppercase
+        }
+
+        .smpte .sub {
+            text-align: center;
+            color: var(--c0);
+            font-family: var(--fm);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-top: 0.35rem;
+            opacity: .6
+        }
 
         /* ═══════════════════════════════════════════════════════════════
            END CREDITS
            ═══════════════════════════════════════════════════════════════ */
-        footer{background:var(--ink);color:var(--c0);padding:3rem 0 1.5rem}
-        .credits-head{text-align:center;margin-bottom:2.6rem;border-top:3px dashed var(--c0);border-bottom:3px dashed var(--c0);padding:1.6rem 0}
-        .credits-head .label{font-family:var(--fm);font-size:0.7rem;font-weight:700;letter-spacing:0.3em;color:var(--yellow);margin-bottom:0.5rem}
-        .credits-head h3{font-family:var(--fh);font-size:clamp(2rem,5vw,3.6rem);color:var(--c0);letter-spacing:0.005em;line-height:1}
-        .credits{max-width:760px;margin:0 auto 2.6rem;display:grid;gap:0.85rem}
-        .credit-row{display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;padding:0.45rem 0;align-items:baseline;font-family:var(--fm);font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
-        .credit-row .role{color:var(--yellow);text-align:right;border-right:2px solid rgba(244,240,230,.18);padding-right:1.8rem}
-        .credit-row .name{color:var(--c0)}
-        .credits-meta{text-align:center;margin:2.6rem auto;padding:1.7rem 1.5rem;border:3px solid var(--yellow);max-width:680px}
-        .credits-meta .l{font-family:var(--fm);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--yellow);margin-bottom:0.9rem}
-        .credits-meta p{font-family:var(--fb);font-size:0.95rem;font-weight:500;line-height:1.6;color:var(--c0)}
-        .foot-bot{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:space-between;align-items:center;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;border-top:2px solid rgba(244,240,230,.18);padding-top:1.4rem;color:rgba(244,240,230,.7)}
-        .foot-bot a{color:var(--yellow)}
-
-        @media (max-width:1000px){
-          .press-grid{grid-template-columns:repeat(2,1fr)}
-          .slate-card{transform:rotate(0deg);width:100%;min-width:0}
-          .credit-row{grid-template-columns:1fr;gap:0.25rem;text-align:center}
-          .credit-row .role{text-align:center;border-right:none;padding-right:0;border-bottom:1px dashed rgba(244,240,230,.18);padding-bottom:0.3rem}
+        footer {
+            background: var(--ink);
+            color: var(--c0);
+            padding: 3rem 0 1.5rem
         }
-        @media (max-width:640px){
-          .press-grid{grid-template-columns:1fr}
-          .statbar{padding:8px 1.25rem;font-size:0.6rem}
-          .countdown{font-size:clamp(48px,14vw,72px)}
-          .hero-title .underline::before{font-size:9px;top:-18px}
-          .hero-grid { grid-template-columns: 1fr; }
-          .smpte .bars{height:48px}
+
+        .credits-head {
+            text-align: center;
+            margin-bottom: 2.6rem;
+            border-top: 3px dashed var(--c0);
+            border-bottom: 3px dashed var(--c0);
+            padding: 1.6rem 0
+        }
+
+        .credits-head .label {
+            font-family: var(--fm);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            color: var(--yellow);
+            margin-bottom: 0.5rem
+        }
+
+        .credits-head h3 {
+            font-family: var(--fh);
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            color: var(--c0);
+            letter-spacing: 0.005em;
+            line-height: 1
+        }
+
+        .credits {
+            max-width: 760px;
+            margin: 0 auto 2.6rem;
+            display: grid;
+            gap: 0.85rem
+        }
+
+        .credit-row {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 2rem;
+            padding: 0.45rem 0;
+            align-items: baseline;
+            font-family: var(--fm);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase
+        }
+
+        .credit-row .role {
+            color: var(--yellow);
+            text-align: right;
+            border-right: 2px solid rgba(244, 240, 230, .18);
+            padding-right: 1.8rem
+        }
+
+        .credit-row .name {
+            color: var(--c0)
+        }
+
+        .credits-meta {
+            text-align: center;
+            margin: 2.6rem auto;
+            padding: 1.7rem 1.5rem;
+            border: 3px solid var(--yellow);
+            max-width: 680px
+        }
+
+        .credits-meta .l {
+            font-family: var(--fm);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--yellow);
+            margin-bottom: 0.9rem
+        }
+
+        .credits-meta p {
+            font-family: var(--fb);
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.6;
+            color: var(--c0)
+        }
+
+        .foot-bot {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--fm);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-top: 2px solid rgba(244, 240, 230, .18);
+            padding-top: 1.4rem;
+            color: rgba(244, 240, 230, .7)
+        }
+
+        .foot-bot a {
+            color: var(--yellow)
+        }
+
+        @media (max-width:1000px) {
+            .press-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .slate-card {
+                transform: rotate(0deg);
+                width: 100%;
+                min-width: 0
+            }
+
+            .credit-row {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+                text-align: center
+            }
+
+            .credit-row .role {
+                text-align: center;
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px dashed rgba(244, 240, 230, .18);
+                padding-bottom: 0.3rem
+            }
+        }
+
+        @media (max-width:640px) {
+            .press-grid {
+                grid-template-columns: 1fr
+            }
+
+            .statbar {
+                padding: 8px 1.25rem;
+                font-size: 0.6rem
+            }
+
+            .countdown {
+                font-size: clamp(48px, 14vw, 72px)
+            }
+
+            .hero-title .underline::before {
+                font-size: 9px;
+                top: -18px
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .smpte .bars {
+                height: 48px
+            }
         }
     </style>
 </head>
@@ -265,28 +861,28 @@
 
     <!-- ════ PRE-LOADER ════ -->
     <div class="loader" id="loader">
-      <div class="l-slate">
-        <div class="clap-bar"></div>
-        <div class="l-slate-header">
-          <span>SCENE 01 · TAKE 01 · ROLL A</span>
-          <span>SHRIPARTH FILMS</span>
+        <div class="l-slate">
+            <div class="clap-bar"></div>
+            <div class="l-slate-header">
+                <span>SCENE 01 · TAKE 01 · ROLL A</span>
+                <span>SHRIPARTH FILMS</span>
+            </div>
+            <div class="l-slate-body">
+                <div class="l-slate-row"><b>PROD.</b><span>KAHIHI HA SHRI</span></div>
+                <div class="l-slate-row"><b>DIR.</b><span>SHRIPARTH C.</span></div>
+                <div class="l-slate-row"><b>EDIT.</b><span>FRIENDLY NEIGHBORHOOD EDITOR</span></div>
+                <div class="l-slate-row"><b>DATE</b><span>KAL PAKKA</span></div>
+            </div>
         </div>
-        <div class="l-slate-body">
-          <div class="l-slate-row"><b>PROD.</b><span>KAHIHI HA SHRI</span></div>
-          <div class="l-slate-row"><b>DIR.</b><span>SHRIPARTH C.</span></div>
-          <div class="l-slate-row"><b>EDIT.</b><span>FRIENDLY NEIGHBORHOOD EDITOR</span></div>
-          <div class="l-slate-row"><b>DATE</b><span>KAL PAKKA</span></div>
-        </div>
-      </div>
-      <div class="countdown" id="countdown">3</div>
-      <div class="loader-msg" id="loaderMsg">ROLLING · SOUND · SPEED</div>
+        <div class="countdown" id="countdown">3</div>
+        <div class="loader-msg" id="loaderMsg">ROLLING · SOUND · SPEED</div>
     </div>
 
     <!-- ════ STATUS BAR ════ -->
     <div class="statbar">
-      <span class="rec">REC · NOW PLAYING</span>
-      <span class="tc" id="tc">00:00:00:00</span>
-      <span>4K UHD · 60FPS · DOLBY ATMOS</span>
+        <span class="rec">REC · NOW PLAYING</span>
+        <span class="tc" id="tc">00:00:00:00</span>
+        <span>4K UHD · 60FPS · DOLBY ATMOS</span>
     </div>
 
     <!-- ─── HEADER ─────────────────────────────────────────────── -->
@@ -308,37 +904,39 @@
 
         <!-- ════ HERO ════ -->
         <section class="hero" id="top">
-          <div class="wrap">
-            <div class="hero-meta">
-              <span class="tag"><span class="dot"></span>NOW STREAMING · S01:E01</span>
-              <span class="tag">STORYTELLER · WANNA-BE AUTEUR</span>
-            </div>
-
-            <div class="hero-grid">
-              <h1 class="hero-title">SHRI<span class="underline">PARTH</span>.</h1>
-              <div class="slate-card">
-                <div class="clap-bar"></div>
-                <div class="sc-top"><span>SLATE</span><span>SC. 01</span></div>
-                <div class="sc-body">
-                  <div class="sc-row"><b>TITLE</b><span>Editor (occasionally writer &amp; camera too)</span></div>
-                  <div class="sc-row"><b>GENRE</b><span>Day Dreaming</span></div>
+            <div class="wrap">
+                <div class="hero-meta">
+                    <span class="tag"><span class="dot"></span>NOW STREAMING · S01:E01</span>
+                    <span class="tag">STORYTELLER · WANNA-BE AUTEUR</span>
                 </div>
-              </div>
+
+                <div class="hero-grid">
+                    <h1 class="hero-title">SHRI<span class="underline">PARTH</span>.</h1>
+                    <div class="slate-card">
+                        <div class="clap-bar"></div>
+                        <div class="sc-top"><span>SLATE</span><span>SC. 01</span></div>
+                        <div class="sc-body">
+                            <div class="sc-row"><b>TITLE</b><span>Editor (occasionally writer &amp; camera too)</span>
+                            </div>
+                            <div class="sc-row"><b>GENRE</b><span>Day Dreaming</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="hero-sub">
+                    Cutting frames. Chasing rhythm. Occasionally crying at the timeline.
+                </p>
+
+                <div class="cta-row">
+                    <a href="#work" class="btn gold">Cue The Tape <span class="arrow">▸</span></a>
+                    <a href="#contact" class="btn primary custom-mail-btn">Greenlight A Project <span
+                            class="arrow">▸</span></a>
+                </div>
             </div>
 
-            <p class="hero-sub">
-              Cutting frames. Chasing rhythm. Occasionally crying at the timeline.
-            </p>
-
-            <div class="cta-row">
-              <a href="#work" class="btn gold">Cue The Tape <span class="arrow">▸</span></a>
-              <a href="#contact" class="btn primary">Greenlight A Project <span class="arrow">▸</span></a>
+            <div class="subs">
+                <span id="subText">[ MUSIC SWELLS ]</span>
             </div>
-          </div>
-
-          <div class="subs">
-            <span id="subText">[ MUSIC SWELLS ]</span>
-          </div>
         </section>
 
         <!-- ─── ABOUT ──────────────────────────────────────────────── -->
@@ -356,25 +954,39 @@
                         <span class="d-block col-yellow-dark">Just an Edit.</span>
                     </h2>
                     <div class="about-meta">
-                        <span>📍 Kolhapur, Maharashtra</span>
+                        <span>📍 Pune, Maharashtra</span>
                         <span class="sep">|</span>
-                        <span>🎂 22 Years Old</span>
+                        <span>🎂 24 Years Old</span>
                         <span class="sep">|</span>
                         <span>🇮🇳 India</span>
                     </div>
                     <div class="about-body">
-                        <p class="about-lead">Hi, I'm Shriparth — a video editor who believes every cut is a choice, and
-                            every choice tells a story.</p>
-                        <p>I started with short films, documentaries, and college reels. Then I built my own YouTube
-                            channel — <a href="https://youtube.com/@kahihihashrii" target="_blank" rel="noopener"
-                                class="link-accent">Kahihi Ha Shri</a> — where I script, research, shoot, light, and
-                            edit everything entirely by myself.</p>
-                        <p>Video essays on cinema, culture, and the fictional characters that quietly ruin us.</p>
+                        <p class="about-lead">Hi — Shriparth here. Editor by trade, cinephile by diagnosis. I believe
+                            every cut is a choice, and most days I overthink each one.</p>
+                        <p>Started with short films, documentaries, and the kind of college reels nobody asked for but
+                            everyone watched. Eventually built my own corner of YouTube — <a
+                                href="https://youtube.com/@kahihihashrii" target="_blank" rel="noopener"
+                                class="link-accent">Kahihi Ha Shri</a> — where I script, shoot, light, color, score, and
+                            edit every video myself. (Yes, all of it. No, I don't sleep enough.)</p>
+
+
+
+                        <p>It's mostly video essays on cinema, culture, and the fictional characters who quietly ruin
+                            us.</p>
                         <blockquote class="about-quote">
-                            "What drives me isn't software or technique — it's understanding what an edit is supposed to
-                            feel like. Every project gets a different approach because every story deserves its own
-                            rhythm."
+                            "What drives me isn't software or technique — those are negotiable. It's the moment at 02:14
+                            when the cut lands and your chest does the thing. Every story has a rhythm. My job is
+                            finding it before the render queue does."
                         </blockquote>
+
+
+                        <div style="margin-top: 1.5rem;">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shriparthc05@gmail.com"
+                                target="_blank" class="btn primary custom-mail-btn"
+                                style="padding: 0.8rem 1.5rem; display: inline-flex; align-items: center; gap: 8px;">
+                                ✉ shriparthc05@gmail.com
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="about-right reveal-up" style="--delay:0.15s">
@@ -383,7 +995,6 @@
                             loading="lazy"
                             onerror="this.style.minHeight='420px';this.style.background='linear-gradient(160deg,#1e1912 0%,#2e2619 40%,#3d3222 70%,#1a1510 100%)';this.alt=''">
                         <div class="img-shadow"></div>
-                        <span class="img-badge">EST. 2019</span>
                         <div class="img-corner img-corner-tl"></div>
                         <div class="img-corner img-corner-br"></div>
                     </div>
@@ -426,13 +1037,17 @@
                         <div class="feat-card">
                             <div class="feat-card-tag">FEATURED PROJECT</div>
                             <h3 class="feat-title col-yellow-dark">THE PRICE OF GREATNESS</h3>
-                            <p class="feat-desc">A short video essay reframing two stories we thought we knew: Arjun's bird's-eye and Andrew's bloodied drumset, told as the same warning twice. The script makes the argument; the edit carries it. Hand-curated cinematic visuals, a score that shifts with the mood, and a typographic pairing — clean white against accent yellow — where even two words on screen are made to hit.</p>
+                            <p class="feat-desc">A short video essay reframing two stories we thought we knew: Arjun's
+                                bird's-eye and Andrew's bloodied drumset, told as the same warning twice. The script
+                                makes the argument; the edit carries it. Hand-curated cinematic visuals, a score that
+                                shifts with the mood, and a typographic pairing — clean white against accent yellow —
+                                where even two words on screen are made to hit.</p>
                             <div class="feat-stats">
                                 <div class="fs-item"><span class="fs-num" style="color:var(--light)">5:58</span><span
                                         class="fs-lbl">Runtime</span></div>
                                 <div class="fs-divider"></div>
-                                <div class="fs-item"><span class="fs-num col-green">4+</span><span
-                                        class="fs-lbl">Days in Edit</span></div>
+                                <div class="fs-item"><span class="fs-num col-green">4+</span><span class="fs-lbl">Days
+                                        in Edit</span></div>
                                 <div class="fs-divider"></div>
                                 <div class="fs-item"><span class="fs-num col-yellow">Script + Cut</span><span
                                         class="fs-lbl">Yours Truly</span></div>
@@ -463,7 +1078,7 @@
                     <h2 class="section-title">ABSOLUTE CINEMA</h2>
                     <p class="section-subtitle">The work I'd show first.</p>
                 </div>
-                
+
                 <div class="highlight-grid">
                     <!-- Highlight 1 -->
                     <div class="proj-card reveal-up" data-video-id="h1" data-num="01" style="--delay:0.1s">
@@ -586,8 +1201,7 @@
                         <div class="proj-vid-frame">
                             <iframe
                                 src="https://www.youtube-nocookie.com/embed/7rNf4TygTEw?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0"
-                                title="Meta Quest 3 — A Review No One's Talking About"
-                                frameborder="0"
+                                title="Meta Quest 3 — A Review No One's Talking About" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
@@ -638,8 +1252,7 @@
                         style="--delay:0.05s">
                         <div class="proj-vid-frame">
                             <iframe src="https://www.youtube.com/embed/g8QpxHtQKbM?rel=0&modestbranding=1"
-                                title="When There's Nothing to Eat at Home"
-                                frameborder="0"
+                                title="When There's Nothing to Eat at Home" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
@@ -909,6 +1522,12 @@
                     <div class="contact-header">
                         <h2 class="philo-contact-title">Let’s Work Together</h2>
                         <p class="philo-contact-sub">Turning raw vision into cinematic rhythm.</p>
+                        <p class="philo-contact-sub"
+                            style="margin-top: 0.5rem; font-family: var(--fm); font-size: 0.85rem;"><a
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=shriparthc05@gmail.com"
+                                target="_blank" class="custom-mail-link"
+                                style="color: var(--yellow-soft); text-decoration: none; border-bottom: 1px solid var(--yellow-soft); padding-bottom: 2px;">shriparthc05@gmail.com</a>
+                        </p>
                     </div>
                     <form class="philo-form" id="contact-form" name="contact" method="POST" data-netlify="true">
                         <input type="hidden" name="form-name" value="contact">
@@ -963,242 +1582,249 @@
 
         <!-- ─── SKILLS ───────────────────────────────────────────── -->
         <section id="skills" class="method">
-          <div class="wrap">
-            <div class="toolkit">
-              <div class="skills-top">
-                <div>
-                  <span class="sec-eyebrow">Tools of the Trade</span>
-                  <h2>Skills &amp;<br/>Toolkit</h2>
-                </div>
-                <p class="skills-intro">Every tool chosen with intent.<br/>Every workflow serves the story.</p>
-              </div>
+            <div class="wrap">
+                <div class="toolkit">
+                    <div class="skills-top">
+                        <div>
+                            <span class="sec-eyebrow">Tools of the Trade</span>
+                            <h2>Skills &amp;<br />Toolkit</h2>
+                        </div>
+                        <p class="skills-intro">Every tool chosen with intent.<br />Every workflow serves the story.</p>
+                    </div>
 
-              <div class="tools-grid">
-                <div class="tool-card">
-                  <div class="ti icon-pr">Pr</div>
-                  <div>
-                    <p class="tn">Premiere Pro</p>
-                    <p class="td">My main weapon. Where I basically live now.</p>
-                  </div>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="ti icon-pr">Pr</div>
+                            <div>
+                                <p class="tn">Premiere Pro</p>
+                                <p class="td">My main weapon. Where I basically live now.</p>
+                            </div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="ti icon-ae">Ae</div>
+                            <div>
+                                <p class="tn">After Effects</p>
+                                <p class="td">Where deadlines come to die. Parampara, Pratishtha, Anushasan.</p>
+                            </div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="ti icon-cv">Cv</div>
+                            <div>
+                                <p class="tn">Canva</p>
+                                <p class="td">For when Photoshop feels like overkill. So, often.</p>
+                            </div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="ti icon-fi">Fi</div>
+                            <div>
+                                <p class="tn">Figma</p>
+                                <p class="td">For pretending I plan things.</p>
+                            </div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="ti icon-hg">Hg</div>
+                            <div>
+                                <p class="tn">Higgsfield</p>
+                                <p class="td">For the shots my brain cooks up but can't shoot. Yet.</p>
+                            </div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="ti icon-ps">Ps</div>
+                            <div>
+                                <p class="tn">Photoshop</p>
+                                <p class="td">Only when I really really have to. We have history.</p>
+                            </div>
+                        </div>
+                        <div class="tool-card">
+                            <div class="ti icon-oi">OI</div>
+                            <div>
+                                <p class="tn">Organic Intelligence</p>
+                                <p class="td">Because AI isn't always the answer. Sometimes I just think.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="tool-card">
-                  <div class="ti icon-ae">Ae</div>
-                  <div>
-                    <p class="tn">After Effects</p>
-                    <p class="td">Where deadlines come to die. Parampara, Pratishtha, Anushasan.</p>
-                  </div>
-                </div>
-                <div class="tool-card">
-                  <div class="ti icon-cv">Cv</div>
-                  <div>
-                    <p class="tn">Canva</p>
-                    <p class="td">For when Photoshop feels like overkill. So, often.</p>
-                  </div>
-                </div>
-                <div class="tool-card">
-                  <div class="ti icon-fi">Fi</div>
-                  <div>
-                    <p class="tn">Figma</p>
-                    <p class="td">For pretending I plan things.</p>
-                  </div>
-                </div>
-                <div class="tool-card">
-                  <div class="ti icon-hg">Hg</div>
-                  <div>
-                    <p class="tn">Higgsfield</p>
-                    <p class="td">For the shots my brain cooks up but can't shoot. Yet.</p>
-                  </div>
-                </div>
-                <div class="tool-card">
-                  <div class="ti icon-ps">Ps</div>
-                  <div>
-                    <p class="tn">Photoshop</p>
-                    <p class="td">Only when I really really have to. We have history.</p>
-                  </div>
-                </div>
-                <div class="tool-card">
-                  <div class="ti icon-oi">OI</div>
-                  <div>
-                    <p class="tn">Organic Intelligence</p>
-                    <p class="td">Because AI isn't always the answer. Sometimes I just think.</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </section>
 
 
         <!-- ════ PRESS NIGHT ════ -->
         <section class="press">
-          <div class="wrap">
-            <div class="sec-head row">
-              <div class="lead">
-                <span class="sec-eyebrow">★ Press Night</span>
-                <h2 class="sec-title">What They're Saying.</h2>
-                <p class="sec-lead">An entirely real compilation of acclaim from across the universe. (No, really. Most of them.)</p>
-              </div>
-              <div class="meta-badge">★ AUDIENCE SCORE · 97%</div>
+            <div class="wrap">
+                <div class="sec-head row">
+                    <div class="lead">
+                        <span class="sec-eyebrow">★ Press Night</span>
+                        <h2 class="sec-title">What They're Saying.</h2>
+                        <p class="sec-lead">An entirely real compilation of acclaim from across the universe. (No,
+                            really. Most of them.)</p>
+                    </div>
+                    <div class="meta-badge">★ AUDIENCE SCORE · 97%</div>
+                </div>
+
+                <div class="press-grid">
+                    <!-- Review 1 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"That was beautiful, beta. Did you eat lunch?"</blockquote>
+                        <cite>— His Mother, after her 4th watch</cite>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★☆☆☆</div>
+                        </div>
+                        <blockquote>"Render failed at 87%. Would humbly request he upgrade my RAM."</blockquote>
+                        <cite>— His Laptop, in stoic protest</cite>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"Watched at 2 AM. Felt seen. Did not sleep. Worth it."</blockquote>
+                        <cite>— Anonymous YouTube Commenter #1847</cite>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"His best work yet. Genuinely moving stuff."</blockquote>
+                        <cite>— Hans, the houseplant (cannot read)</cite>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"Cried at the cut at 02:14. Started over. Cried again."</blockquote>
+                        <cite>— A viewer who refuses to be named</cite>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                        <blockquote>"He edited my Reel and now my mother thinks I'm successful."</blockquote>
+                        <cite>— Anonymous client, lightly paraphrased</cite>
+                    </div>
+
+                    <!-- Review 7 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"Friendly neighborhood storyteller. He shoots, he edits, he saves the timeline. With
+                            great filters comes great responsibility."</blockquote>
+                        <cite>— Queens NY Wall-Crawler</cite>
+                    </div>
+
+                    <!-- Review 8 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"He made me an edit I couldn't refuse. A real consigliere of the cut."</blockquote>
+                        <cite>— An anonymous Don, family business</cite>
+                    </div>
+
+                    <!-- Review 9 -->
+                    <div class="review">
+                        <div class="review-top">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <blockquote>"World's Best Editor. Mug pending. Also — identity theft is not a joke when you're
+                            this good."</blockquote>
+                        <cite>— A certain Regional Manager, Scranton Branch</cite>
+                    </div>
+                </div>
+
+                <div class="press-disclaimer">
+                    ✸ Reviews compiled from a sample size of one houseplant, one MacBook, and several humans of varying
+                    credibility. Star ratings are correct as of the last good edit.
+                </div>
             </div>
-
-            <div class="press-grid">
-              <!-- Review 1 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-lavender">👑 MATRIARCHAL APPROVAL</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"That was beautiful, beta. Did you eat lunch?"</blockquote>
-                <cite>— His Mother, after her 4th watch</cite>
-              </div>
-
-              <!-- Review 2 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-red">💻 HARDWARE GRIEVANCE</span>
-                  <div class="stars">★★☆☆☆</div>
-                </div>
-                <blockquote>"Render failed at 87%. Would humbly request he upgrade my RAM."</blockquote>
-                <cite>— His Laptop, in stoic protest</cite>
-              </div>
-
-              <!-- Review 3 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-blue">💬 SOUL STIRRED</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"Watched at 2 AM. Felt seen. Did not sleep. Worth it."</blockquote>
-                <cite>— Anonymous YouTube Commenter #1847</cite>
-              </div>
-
-              <!-- Review 4 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-green">🌿 BOTANICAL RATING</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"His best work yet. Genuinely moving stuff."</blockquote>
-                <cite>— Hans, the houseplant (cannot read)</cite>
-              </div>
-
-              <!-- Review 5 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-lavender">💧 TEARJERKER CUT</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"Cried at the cut at 02:14. Started over. Cried again."</blockquote>
-                <cite>— A viewer who refuses to be named</cite>
-              </div>
-
-              <!-- Review 6 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-yellow">💼 MATERNAL PRIDE</span>
-                  <div class="stars">★★★★☆</div>
-                </div>
-                <blockquote>"He edited my Reel and now my mother thinks I'm successful."</blockquote>
-                <cite>— Anonymous client, lightly paraphrased</cite>
-              </div>
-
-              <!-- Review 7 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-red">🕸️ SPIDEY SENSE</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"Friendly neighborhood storyteller. He shoots, he edits, he saves the timeline. With great filters comes great responsibility."</blockquote>
-                <cite>— Queens NY Wall-Crawler</cite>
-              </div>
-
-              <!-- Review 8 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-blue">🕶️ CONSIGLIERE</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"He made me an edit I couldn't refuse. A real consigliere of the cut."</blockquote>
-                <cite>— An anonymous Don, family business</cite>
-              </div>
-
-              <!-- Review 9 -->
-              <div class="review">
-                <div class="review-top">
-                  <span class="review-badge badge-yellow">📎 THREAT LEVEL MIDNIGHT</span>
-                  <div class="stars">★★★★★</div>
-                </div>
-                <blockquote>"World's Best Editor. Mug pending. Also — identity theft is not a joke when you're this good."</blockquote>
-                <cite>— A certain Regional Manager, Scranton Branch</cite>
-              </div>
-            </div>
-
-            <div class="press-disclaimer">
-              ✸ Reviews compiled from a sample size of one houseplant, one MacBook, and several humans of varying credibility. Star ratings are correct as of the last good edit.
-            </div>
-          </div>
         </section>
 
     </main>
 
     <!-- ════ SMPTE BARS ════ -->
     <div class="smpte">
-      <div class="bars">
-        <span style="background:#F4F0E6"></span>
-        <span style="background:#E8B800"></span>
-        <span style="background:#5ea3e0"></span>
-        <span style="background:#1A9E5C"></span>
-        <span style="background:#B8A9FA"></span>
-        <span style="background:#C0392B"></span>
-        <span style="background:#2563A8"></span>
-        <span style="background:#000"></span>
-      </div>
-      <div class="lbl">— End Of Transmission —</div>
-      <div class="sub">Stand by · Credits to follow · 1 kHz tone (just kidding)</div>
+        <div class="bars">
+            <span style="background:#F4F0E6"></span>
+            <span style="background:#E8B800"></span>
+            <span style="background:#5ea3e0"></span>
+            <span style="background:#1A9E5C"></span>
+            <span style="background:#B8A9FA"></span>
+            <span style="background:#C0392B"></span>
+            <span style="background:#2563A8"></span>
+            <span style="background:#000"></span>
+        </div>
+        <div class="lbl">— End Of Transmission —</div>
+        <div class="sub">Stand by · Credits to follow · 1 kHz tone (just kidding)</div>
     </div>
 
     <!-- ════ END CREDITS ════ -->
     <footer>
-      <div class="wrap">
-        <div class="credits-head">
-          <div class="label">— End Credits —</div>
-          <h3>A SHRIPARTH JOINT.</h3>
-        </div>
+        <div class="wrap">
+            <div class="credits-head">
+                <div class="label">— End Credits —</div>
+                <h3>A SHRIPARTH JOINT.</h3>
+            </div>
 
-        <div class="credits">
-          <div class="credit-row"><span class="role">Directed By</span><span class="name">Shriparth C.</span></div>
-          <div class="credit-row"><span class="role">Coffee Department</span><span class="name">The Lukewarm Mug</span></div>
-          <div class="credit-row"><span class="role">Chief Consigliere</span><span class="name">3 AM Inspiration</span></div>
-          <div class="credit-row"><span class="role">Department of Doubt</span><span class="name">Me, Myself and I (on a loop)</span></div>
-          <div class="credit-row"><span class="role">Arch Nemesis</span><span class="name">"Export Failed — Disk Full"</span></div>
-          <div class="credit-row"><span class="role">Creature FX</span><span class="name">Deadline Anxiety</span></div>
-          <div class="credit-row"><span class="role">Best Boy</span><span class="name">Shortcut Keys</span></div>
-          <div class="credit-row"><span class="role">Supervising Producer</span><span class="name">Procrastination (uncredited)</span></div>
-          <div class="credit-row"><span class="role">Catering</span><span class="name">Maggi · 2 AM Variant</span></div>
-          <div class="credit-row"><span class="role">Stunt Coordinator</span><span class="name">Save File Often (in loving memory)</span></div>
-          <div class="credit-row"><span class="role">Director's Mentor</span><span class="name">Obi-Wan-Adjacent Energy</span></div>
-          <div class="credit-row"><span class="role">Wingman</span><span class="name">Goose, Memorial Reel</span></div>
-          <div class="credit-row"><span class="role">Power Level Auditor</span><span class="name">Confirmed Over 9000</span></div>
-        </div>
+            <div class="credits">
+                <div class="credit-row"><span class="role">Directed By</span><span class="name">Shriparth C.</span>
+                </div>
+                <div class="credit-row"><span class="role">Coffee Department</span><span class="name">The Lukewarm
+                        Mug</span></div>
+                <div class="credit-row"><span class="role">Chief Consigliere</span><span class="name">3 AM
+                        Inspiration</span></div>
+                <div class="credit-row"><span class="role">Department of Doubt</span><span class="name">Me, Myself and I
+                        (on a loop)</span></div>
+                <div class="credit-row"><span class="role">Arch Nemesis</span><span class="name">"Export Failed — Disk
+                        Full"</span></div>
+                <div class="credit-row"><span class="role">Creature FX</span><span class="name">Deadline Anxiety</span>
+                </div>
+                <div class="credit-row"><span class="role">Best Boy</span><span class="name">Shortcut Keys</span></div>
+                <div class="credit-row"><span class="role">Supervising Producer</span><span class="name">Procrastination
+                        (uncredited)</span></div>
+                <div class="credit-row"><span class="role">Catering</span><span class="name">Maggi · 2 AM Variant</span>
+                </div>
+                <div class="credit-row"><span class="role">Stunt Coordinator</span><span class="name">Save File Often
+                        (in loving memory)</span></div>
+                <div class="credit-row"><span class="role">Director's Mentor</span><span class="name">Obi-Wan-Adjacent
+                        Energy</span></div>
+                <div class="credit-row"><span class="role">Wingman</span><span class="name">Goose, Memorial Reel</span>
+                </div>
+                <div class="credit-row"><span class="role">Power Level Auditor</span><span class="name">Confirmed Over
+                        9000</span></div>
+            </div>
 
-        <div class="credits-meta">
-          <div class="l">— Special Thanks —</div>
-          <p>
-            The directors who taught us that time can be rearranged.<br />
-            The composers who proved silence is a key.<br />
-            The wall-crawlers who reminded us responsibility scales with power.<br />
-            The Jedi (and the Sith) who taught us patience comes before precision.<br />
-            The dark knights who answered the signal at 3:47 AM.<br />
-            The games that made us cry at 3 AM.<br />
-            And every fictional character who quietly ruined us.
-          </p>
-        </div>
+            <div class="credits-meta">
+                <div class="l">— Special Thanks —</div>
+                <p>
+                    The directors who taught us that time can be rearranged.<br />
+                    The composers who proved silence is a key.<br />
+                    The wall-crawlers who reminded us responsibility scales with power.<br />
+                    The Jedi (and the Sith) who taught us patience comes before precision.<br />
+                    The dark knights who answered the signal at 3:47 AM.<br />
+                    The games that made us cry at 3 AM.<br />
+                    And every fictional character who quietly ruined us.
+                </p>
+            </div>
 
-        <div class="foot-bot">
-          <span>© 2026 SHRIPARTH · ALL RIGHTS RESERVED · NO ANIMALS HARMED</span>
-          <span>Design & Developed by &nbsp; <a href="https://sohamkachale.netlify.app/">Soham Kachale</a></span>
+            <div class="foot-bot">
+                <span>© 2026 SHRIPARTH · ALL RIGHTS RESERVED · NO ANIMALS HARMED</span>
+                <span>Design & Developed by &nbsp; <a href="https://sohamkachale.netlify.app/">Soham Kachale</a></span>
+            </div>
         </div>
-      </div>
     </footer>
 
     <!-- Toast -->
@@ -1271,98 +1897,98 @@
     <!-- ─── V11 DIRECTORS CUT SCRIPTS ───────────────────── -->
     <script>
         /* Pre-loader */
-        (function(){
-          const countdown=document.getElementById('countdown');
-          const loader=document.getElementById('loader');
-          if (countdown && loader) {
-              const msg=document.getElementById('loaderMsg');
-              const phases=['3','2','1','ACTION'];
-              const msgs=['ROLLING · SOUND · SPEED','CAMERA HOT · LIGHTS UP','MARKERS IN POSITION','— ACTION —'];
-              let i=0;countdown.textContent=phases[0];msg.textContent=msgs[0];
-              const tick=setInterval(()=>{
-                i++;
-                if(i>=phases.length){clearInterval(tick);setTimeout(()=>loader.classList.add('gone'),400);return;}
-                countdown.textContent=phases[i];msg.textContent=msgs[i];
-              },650);
-              setTimeout(()=>loader.classList.add('gone'),4000);
-          }
+        (function () {
+            const countdown = document.getElementById('countdown');
+            const loader = document.getElementById('loader');
+            if (countdown && loader) {
+                const msg = document.getElementById('loaderMsg');
+                const phases = ['3', '2', '1', 'ACTION'];
+                const msgs = ['ROLLING · SOUND · SPEED', 'CAMERA HOT · LIGHTS UP', 'MARKERS IN POSITION', '— ACTION —'];
+                let i = 0; countdown.textContent = phases[0]; msg.textContent = msgs[0];
+                const tick = setInterval(() => {
+                    i++;
+                    if (i >= phases.length) { clearInterval(tick); setTimeout(() => loader.classList.add('gone'), 400); return; }
+                    countdown.textContent = phases[i]; msg.textContent = msgs[i];
+                }, 650);
+                setTimeout(() => loader.classList.add('gone'), 4000);
+            }
         })();
 
         /* Live timecode */
-        (function(){
-          const el=document.getElementById('tc');const t0=Date.now();
-          if (el) {
-              function tick(){
-                const ms=Date.now()-t0;
-                const h=String(Math.floor(ms/3600000)%100).padStart(2,'0');
-                const m=String(Math.floor(ms/60000)%60).padStart(2,'0');
-                const s=String(Math.floor(ms/1000)%60).padStart(2,'0');
-                const f=String(Math.floor((ms%1000)/(1000/24))).padStart(2,'0');
-                el.textContent=`${h}:${m}:${s}:${f}`;
-                requestAnimationFrame(tick);
-              }
-              tick();
-          }
+        (function () {
+            const el = document.getElementById('tc'); const t0 = Date.now();
+            if (el) {
+                function tick() {
+                    const ms = Date.now() - t0;
+                    const h = String(Math.floor(ms / 3600000) % 100).padStart(2, '0');
+                    const m = String(Math.floor(ms / 60000) % 60).padStart(2, '0');
+                    const s = String(Math.floor(ms / 1000) % 60).padStart(2, '0');
+                    const f = String(Math.floor((ms % 1000) / (1000 / 24))).padStart(2, '0');
+                    el.textContent = `${h}:${m}:${s}:${f}`;
+                    requestAnimationFrame(tick);
+                }
+                tick();
+            }
         })();
 
         /* Subtitle rotator */
-        (function(){
-          const lines=[
-            '[ MUSIC SWELLS ]',
-            '[ CAMERA LINGERS ON FACE ]',
-            '[ HIGH GROUND ACQUIRED ]',
-            '[ DISTANT CINEMATIC HUM ]',
-            '[ BAT-SIGNAL OVERHEAD ]',
-            '[ KEYBOARD CLICKS, RAPID ]',
-            '[ NEED FOR SPEED — FELT ]',
-            '[ COFFEE MUG SET DOWN, GENTLY ]',
-            '[ POWER LEVEL: SCANNING… 9001+ ]',
-            '[ SILENCE — LONG ]',
-            '[ PIVOT! PIVOT! ]',
-            '[ INDISTINCT VIDEO ESSAY ]',
-            '[ DEAR DIARY — THE EDIT ATE THE NIGHT ]',
-            '[ DRAMATIC PAUSE ]',
-            '[ SHUTTER CLICKS ]',
-            '[ FOOTSTEPS, APPROACHING ]'
-          ];
-          const el=document.getElementById('subText');
-          if (el) {
-              let i=0;
-              setInterval(()=>{
-                el.classList.add('fade');
-                setTimeout(()=>{
-                  i=(i+1)%lines.length;
-                  el.textContent=lines[i];
-                  el.classList.remove('fade');
-                },350);
-              },4200);
-          }
+        (function () {
+            const lines = [
+                '[ MUSIC SWELLS ]',
+                '[ CAMERA LINGERS ON FACE ]',
+                '[ HIGH GROUND ACQUIRED ]',
+                '[ DISTANT CINEMATIC HUM ]',
+                '[ BAT-SIGNAL OVERHEAD ]',
+                '[ KEYBOARD CLICKS, RAPID ]',
+                '[ NEED FOR SPEED — FELT ]',
+                '[ COFFEE MUG SET DOWN, GENTLY ]',
+                '[ POWER LEVEL: SCANNING… 9001+ ]',
+                '[ SILENCE — LONG ]',
+                '[ PIVOT! PIVOT! ]',
+                '[ INDISTINCT VIDEO ESSAY ]',
+                '[ DEAR DIARY — THE EDIT ATE THE NIGHT ]',
+                '[ DRAMATIC PAUSE ]',
+                '[ SHUTTER CLICKS ]',
+                '[ FOOTSTEPS, APPROACHING ]'
+            ];
+            const el = document.getElementById('subText');
+            if (el) {
+                let i = 0;
+                setInterval(() => {
+                    el.classList.add('fade');
+                    setTimeout(() => {
+                        i = (i + 1) % lines.length;
+                        el.textContent = lines[i];
+                        el.classList.remove('fade');
+                    }, 350);
+                }, 4200);
+            }
         })();
 
         /* Toast & Easter Eggs */
-        const toast=document.getElementById('toast');
-        const toastText=document.getElementById('toastText');
+        const toast = document.getElementById('toast');
+        const toastText = document.getElementById('toastText');
         let toastTimer;
-        function showToast(text,ms=3000){
-          if(toastText) toastText.textContent=text;
-          if(toast) toast.classList.add('show');
-          clearTimeout(toastTimer);
-          toastTimer=setTimeout(()=>{if(toast) toast.classList.remove('show')},ms);
+        function showToast(text, ms = 3000) {
+            if (toastText) toastText.textContent = text;
+            if (toast) toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { if (toast) toast.classList.remove('show') }, ms);
         }
 
-        const konami=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','KeyB','KeyA'];
-        let kIdx=0;
-        window.addEventListener('keydown',(e)=>{
-          if(e.code===konami[kIdx]){
-            kIdx++;
-            if(kIdx===konami.length){
-              showToast('GOD MODE · All cuts now make sense.',4500);
-              document.body.style.transition='filter .4s';
-              document.body.style.filter='hue-rotate(25deg) saturate(1.15)';
-              setTimeout(()=>document.body.style.filter='',4500);
-              kIdx=0;
-            }
-          } else { kIdx=0; }
+        const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        let kIdx = 0;
+        window.addEventListener('keydown', (e) => {
+            if (e.code === konami[kIdx]) {
+                kIdx++;
+                if (kIdx === konami.length) {
+                    showToast('GOD MODE · All cuts now make sense.', 4500);
+                    document.body.style.transition = 'filter .4s';
+                    document.body.style.filter = 'hue-rotate(25deg) saturate(1.15)';
+                    setTimeout(() => document.body.style.filter = '', 4500);
+                    kIdx = 0;
+                }
+            } else { kIdx = 0; }
         });
     </script>
 
