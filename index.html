@@ -169,7 +169,7 @@
            PRESS NIGHT
            ═══════════════════════════════════════════════════════════════ */
         .press{background:var(--lavender);border-top:var(--b-thick);border-bottom:var(--b-thick);padding:5rem 0}
-        .press .sec-title{color:var(--ink) !important; font-family: var(--fh) !important;}
+        .press .sec-title{color:var(--ink) !important; font-family: var(--fh) !important; text-shadow: 4px 4px 0 var(--yellow-soft) !important; font-size: clamp(2.5rem, 5.5vw, 4.5rem) !important;}
         .press .sec-title::after{display:none}
         .press .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.5rem}
         .press .lead{max-width:620px}
@@ -177,24 +177,40 @@
           font-family:var(--fm);font-size:0.7rem;font-weight:700;
           letter-spacing:0.14em;text-transform:uppercase;
           padding:0.55rem 0.95rem;border:var(--b);background:var(--paper);
-          box-shadow:var(--bs1);color:var(--ink);
+          box-shadow:var(--bs2);color:var(--ink);
+          transform: rotate(-1.5deg);
         }
-        .press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.4rem}
+        .press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.8rem}
         .review{
           border:var(--b);background:var(--paper);box-shadow:var(--bs2);
-          padding:1.4rem;display:flex;flex-direction:column;gap:0.8rem;
-          transition:transform .15s, box-shadow .15s;
+          padding:1.6rem;display:flex;flex-direction:column;gap:1rem;
+          transition:transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.3s ease;
+          position: relative;
         }
-        .review:hover{transform:translate(-3px,-3px);box-shadow:var(--bs3)}
-        .review:nth-child(3n+2){background:var(--yellow-soft)}
-        .review:nth-child(3n+3){background:var(--red-soft)}
-        .review .stars{font-family:var(--fh);font-size:1.5rem;letter-spacing:0.06em;color:var(--ink);line-height:1}
-        .review blockquote{font-family:var(--fb);font-weight:600;font-size:0.97rem;line-height:1.45;color:var(--ink);border-left:4px solid var(--ink);padding-left:0.85rem;margin:0;}
-        .review cite{font-family:var(--fm);font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;font-style:normal;color:var(--ink);margin-top:auto;opacity:0.85}
+        .review:nth-child(odd){transform:rotate(-1deg)}
+        .review:nth-child(even){transform:rotate(1.2deg)}
+        .review:hover{transform:translate(-6px,-6px) rotate(0deg) scale(1.02) !important;box-shadow:10px 10px 0 var(--ink) !important;z-index:10}
+        .review:nth-child(4n+1){background:#FFFCF4}
+        .review:nth-child(4n+2){background:#EAE6FF}
+        .review:nth-child(4n+3){background:#FFF4D2}
+        .review:nth-child(4n+4){background:#FFEBE7}
+        .review-top{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.1rem}
+        .review-badge{font-family:var(--fm);font-size:0.58rem;font-weight:700;letter-spacing:1px;padding:3px 8px;border:1.5px solid var(--ink);border-radius:4px;box-shadow:2px 2px 0 var(--ink);text-transform:uppercase}
+        .badge-lavender{background:var(--lavender);color:var(--ink)}
+        .badge-red{background:var(--red-soft);color:var(--paper)}
+        .badge-blue{background:#5ea3e0;color:var(--paper)}
+        .badge-green{background:#1A9E5C;color:var(--paper)}
+        .badge-yellow{background:var(--yellow-soft);color:var(--ink)}
+        .review .stars{color:#E8B800;text-shadow:1px 1px 0 var(--ink);font-size:1.15rem;font-family:var(--fh);line-height:1}
+        .review blockquote{font-family:var(--fb);font-weight:700;font-size:1.05rem;line-height:1.5;color:var(--ink);border-left:none;padding-left:0;margin:0;position:relative;z-index:1}
+        .review blockquote::before{content:'“';font-family:var(--fh);font-size:2.8rem;color:rgba(25,22,18,0.08);position:absolute;top:-1.3rem;left:-0.6rem;z-index:-1}
+        .review cite{font-family:var(--fm);font-size:0.68rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;font-style:normal;color:var(--ink);margin-top:auto;opacity:0.8;display:flex;align-items:center;gap:6px}
+        .review cite::before{content:'🎬';font-size:0.75rem}
         .press-disclaimer{
-          margin-top:2rem;padding:0.9rem 1.2rem;border:2px dashed var(--ink);
+          margin-top:2.5rem;padding:0.9rem 1.2rem;border:2px dashed var(--ink);
           font-family:var(--fm);font-size:0.7rem;font-weight:700;
           letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
+          background:rgba(255,255,255,0.4);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -363,7 +379,7 @@
                 </div>
                 <div class="about-right reveal-up" style="--delay:0.15s">
                     <div class="img-wrap">
-                        <img src="assets/images/about-shriparth.png" alt="Shriparth — Video Editor" class="about-img"
+                        <img src="assets/images/about-me.jpg" alt="Shriparth — Video Editor" class="about-img"
                             loading="lazy"
                             onerror="this.style.minHeight='420px';this.style.background='linear-gradient(160deg,#1e1912 0%,#2e2619 40%,#3d3222 70%,#1a1510 100%)';this.alt=''">
                         <div class="img-shadow"></div>
@@ -391,14 +407,14 @@
                         <div class="proj-card reveal-up" data-video-id="featured1" data-num="★" style="--delay:0s">
                             <div class="proj-vid-frame">
                                 <iframe src="https://www.youtube.com/embed/1NInV19MR3Q?si=1_FKqfPm3FbZ-PHO"
-                                    title="Featured Project: Silence Between Frames" frameborder="0"
+                                    title="Featured Project: THE PRICE OF GREATNESS" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen loading="lazy"></iframe>
                             </div>
                             <div class="proj-info">
                                 <div class="proj-info-left">
                                     <span class="proj-num">★</span>
-                                    <h3>Silence Between Frames</h3>
+                                    <h3>THE PRICE OF GREATNESS</h3>
                                 </div>
                             </div>
                         </div>
@@ -409,26 +425,24 @@
                     <div class="feat-info-col reveal-up" style="--delay:0.15s">
                         <div class="feat-card">
                             <div class="feat-card-tag">FEATURED PROJECT</div>
-                            <h3 class="feat-title col-yellow-dark">Silence Between Frames</h3>
-                            <p class="feat-desc">A cinematic deep-dive into the emotional power of negative space in
-                                storytelling — exploring how the moments between cuts define a film's soul. Scripted,
-                                shot, lit, and edited entirely by Shriparth over 90+ hours of post-production.</p>
+                            <h3 class="feat-title col-yellow-dark">THE PRICE OF GREATNESS</h3>
+                            <p class="feat-desc">A short video essay reframing two stories we thought we knew: Arjun's bird's-eye and Andrew's bloodied drumset, told as the same warning twice. The script makes the argument; the edit carries it. Hand-curated cinematic visuals, a score that shifts with the mood, and a typographic pairing — clean white against accent yellow — where even two words on screen are made to hit.</p>
                             <div class="feat-stats">
-                                <div class="fs-item"><span class="fs-num col-yellow">50K+</span><span
-                                        class="fs-lbl">Views</span></div>
-                                <div class="fs-divider"></div>
-                                <div class="fs-item"><span class="fs-num col-green">90<small>hrs</small></span><span
-                                        class="fs-lbl">Editing</span></div>
-                                <div class="fs-divider"></div>
-                                <div class="fs-item"><span class="fs-num"
-                                        style="color:var(--light)">18<small>min</small></span><span
+                                <div class="fs-item"><span class="fs-num" style="color:var(--light)">5:58</span><span
                                         class="fs-lbl">Runtime</span></div>
+                                <div class="fs-divider"></div>
+                                <div class="fs-item"><span class="fs-num col-green">4+</span><span
+                                        class="fs-lbl">Days in Edit</span></div>
+                                <div class="fs-divider"></div>
+                                <div class="fs-item"><span class="fs-num col-yellow">Script + Cut</span><span
+                                        class="fs-lbl">Yours Truly</span></div>
                             </div>
                             <div class="feat-tags">
                                 <span class="ftag">Video Essay</span>
-                                <span class="ftag">Cinema Analysis</span>
+                                <span class="ftag">Film Analysis</span>
                                 <span class="ftag">Sound Design</span>
                                 <span class="ftag">Color Grade</span>
+                                <span class="ftag">Short-Form</span>
                             </div>
                             <button class="btn btn-dark btn-block mt-lg feat-watch-btn play-trigger"
                                 data-video-id="featured1">
@@ -446,8 +460,8 @@
             <div class="wrap">
                 <div class="section-header reveal-up">
                     <span class="eyebrow">Creative Spotlight</span>
-                    <h2 class="section-title">To Be Highlighted</h2>
-                    <p class="section-subtitle">A collection of my most impactful stories and visual experiments.</p>
+                    <h2 class="section-title">ABSOLUTE CINEMA</h2>
+                    <p class="section-subtitle">The work I'd show first.</p>
                 </div>
                 
                 <div class="highlight-grid">
@@ -455,14 +469,14 @@
                     <div class="proj-card reveal-up" data-video-id="h1" data-num="01" style="--delay:0.1s">
                         <div class="proj-vid-frame">
                             <iframe src="https://www.youtube.com/embed/E8WvVFB7klo?rel=0&modestbranding=1"
-                                title="Visual Storytelling" frameborder="0"
+                                title="AGYAAT: A One-Minute Horror Short Film" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">01</span>
-                                <h3>Visual Storytelling</h3>
+                                <h3>AGYAAT: A One-Minute Horror Short — Shot on Mobile</h3>
                             </div>
                         </div>
                     </div>
@@ -471,14 +485,14 @@
                     <div class="proj-card reveal-up" data-video-id="h2" data-num="02" style="--delay:0.2s">
                         <div class="proj-vid-frame">
                             <iframe src="https://www.youtube.com/embed/5E8WE2xhMqU?rel=0&modestbranding=1"
-                                title="Advanced Post-Production" frameborder="0"
+                                title="DUST OFF: A Cinematic Bike Film" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">02</span>
-                                <h3>Advanced Post-Production</h3>
+                                <h3>DUST OFF: A Cinematic Bike Film</h3>
                             </div>
                         </div>
                     </div>
@@ -491,7 +505,8 @@
             <div class="dot-bg"></div>
             <div class="wrap">
                 <div class="work-header">
-                    <h2 class="section-title reveal-up">Project Showcase</h2>
+                    <h2 class="section-title reveal-up">THE FULL CUT</h2>
+                    <p class="section-subtitle reveal-up" style="--delay:0.1s">The work that took the long way.</p>
                 </div>
                 <div class="proj-grid">
 
@@ -553,14 +568,14 @@
                         <div class="proj-vid-frame">
                             <iframe
                                 src="https://www.youtube-nocookie.com/embed/lYLvPzTBSVE?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0"
-                                title="Vishwaayan 2023 | Fest After Movie" frameborder="0"
+                                title="Vishwaayan 2023 — Fest After Movie" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">04</span>
-                                <h3>Vishwaayan 2023 | Fest After Movie</h3>
+                                <h3>Vishwaayan 2023 — Fest After Movie</h3>
                             </div>
                         </div>
                     </div>
@@ -571,7 +586,7 @@
                         <div class="proj-vid-frame">
                             <iframe
                                 src="https://www.youtube-nocookie.com/embed/7rNf4TygTEw?autoplay=0&rel=0&loop=0&controls=1&cc_load_policy=0"
-                                title="Meta Quest 3 Review: Why Isn't Anyone Talking About This VR Headset!? | Quest 3 | AevyTv Cohort 7"
+                                title="Meta Quest 3 — A Review No One's Talking About"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
@@ -579,8 +594,7 @@
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">05</span>
-                                <h3>Meta Quest 3 Review: Why Isn't Anyone Talking About This VR Headset!? | Quest 3 |
-                                    AevyTv Cohort 7</h3>
+                                <h3>Meta Quest 3 — A Review No One's Talking About</h3>
                             </div>
                         </div>
                     </div>
@@ -590,14 +604,14 @@
                         style="--delay:0.1s">
                         <div class="proj-vid-frame">
                             <iframe src="https://www.youtube.com/embed/NIIqW-gSDLk?rel=0&modestbranding=1"
-                                title="Sometimes its okay to do.... | Aevython | AevyTv Cohort 7" frameborder="0"
+                                title="A One Minute Story" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">06</span>
-                                <h3>Sometimes its okay to do.... | Aevython | AevyTv Cohort 7</h3>
+                                <h3>A One Minute Story</h3>
                             </div>
                         </div>
                     </div>
@@ -607,14 +621,14 @@
                         style="--delay:0s">
                         <div class="proj-vid-frame">
                             <iframe src="https://www.youtube.com/embed/_NA9OHg8RC0?rel=0&modestbranding=1"
-                                title="KUMSS Promo" frameborder="0"
+                                title="KUMSS — Institutional Promo" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">07</span>
-                                <h3>KUMSS Promo</h3>
+                                <h3>KUMSS — Institutional Promo</h3>
                             </div>
                         </div>
                     </div>
@@ -624,7 +638,7 @@
                         style="--delay:0.05s">
                         <div class="proj-vid-frame">
                             <iframe src="https://www.youtube.com/embed/g8QpxHtQKbM?rel=0&modestbranding=1"
-                                title="When there's nothing to eat at home | Aevython Day 1 | AevyTv Cohort 7"
+                                title="When There's Nothing to Eat at Home"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
@@ -632,7 +646,7 @@
                         <div class="proj-info">
                             <div class="proj-info-left">
                                 <span class="proj-num">08</span>
-                                <h3>When there's nothing to eat at home | Aevython Day 1 | AevyTv Cohort 7</h3>
+                                <h3>When There's Nothing to Eat at Home</h3>
                             </div>
                         </div>
                     </div>
@@ -1028,50 +1042,94 @@
             </div>
 
             <div class="press-grid">
+              <!-- Review 1 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-lavender">👑 MATRIARCHAL APPROVAL</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"That was beautiful, beta. Did you eat lunch?"</blockquote>
                 <cite>— His Mother, after her 4th watch</cite>
               </div>
+
+              <!-- Review 2 -->
               <div class="review">
-                <div class="stars">★★☆☆☆</div>
+                <div class="review-top">
+                  <span class="review-badge badge-red">💻 HARDWARE GRIEVANCE</span>
+                  <div class="stars">★★☆☆☆</div>
+                </div>
                 <blockquote>"Render failed at 87%. Would humbly request he upgrade my RAM."</blockquote>
                 <cite>— His Laptop, in stoic protest</cite>
               </div>
+
+              <!-- Review 3 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-blue">💬 SOUL STIRRED</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"Watched at 2 AM. Felt seen. Did not sleep. Worth it."</blockquote>
                 <cite>— Anonymous YouTube Commenter #1847</cite>
               </div>
+
+              <!-- Review 4 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-green">🌿 BOTANICAL RATING</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"His best work yet. Genuinely moving stuff."</blockquote>
                 <cite>— Hans, the houseplant (cannot read)</cite>
               </div>
+
+              <!-- Review 5 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-lavender">💧 TEARJERKER CUT</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"Cried at the cut at 02:14. Started over. Cried again."</blockquote>
                 <cite>— A viewer who refuses to be named</cite>
               </div>
+
+              <!-- Review 6 -->
               <div class="review">
-                <div class="stars">★★★★☆</div>
+                <div class="review-top">
+                  <span class="review-badge badge-yellow">💼 MATERNAL PRIDE</span>
+                  <div class="stars">★★★★☆</div>
+                </div>
                 <blockquote>"He edited my Reel and now my mother thinks I'm successful."</blockquote>
                 <cite>— Anonymous client, lightly paraphrased</cite>
               </div>
+
+              <!-- Review 7 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-red">🕸️ SPIDEY SENSE</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"Friendly neighborhood storyteller. He shoots, he edits, he saves the timeline. With great filters comes great responsibility."</blockquote>
-                <cite>— A wall-crawling fan, Queens NY</cite>
+                <cite>— Queens NY Wall-Crawler</cite>
               </div>
+
+              <!-- Review 8 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-blue">🕶️ CONSIGLIERE</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"He made me an edit I couldn't refuse. A real consigliere of the cut."</blockquote>
                 <cite>— An anonymous Don, family business</cite>
               </div>
+
+              <!-- Review 9 -->
               <div class="review">
-                <div class="stars">★★★★★</div>
+                <div class="review-top">
+                  <span class="review-badge badge-yellow">📎 THREAT LEVEL MIDNIGHT</span>
+                  <div class="stars">★★★★★</div>
+                </div>
                 <blockquote>"World's Best Editor. Mug pending. Also — identity theft is not a joke when you're this good."</blockquote>
-                <cite>— A certain Regional Manager, Scranton Branch · Paper Co.</cite>
+                <cite>— A certain Regional Manager, Scranton Branch</cite>
               </div>
             </div>
 

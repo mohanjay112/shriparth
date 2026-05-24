@@ -516,3 +516,129 @@
         flex: 0 0 8vw;
     }
 }
+
+/* ── FEATURED PROJECT STATS RESPONSIVENESS ── */
+.fs-num {
+    font-size: clamp(1.5rem, 5vw, 2.7rem) !important;
+}
+
+@media (max-width: 992px) {
+    .feat-grid {
+        grid-template-columns: 1fr !important;
+        align-items: stretch !important;
+    }
+    .feat-vid-col {
+        display: block !important;
+        height: auto !important;
+    }
+    .feat-vid-col .proj-card {
+        height: auto !important;
+        display: block !important;
+    }
+    .feat-vid-col .proj-vid-frame {
+        padding-top: 56.25% !important; /* 16:9 aspect ratio */
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+    .feat-stats {
+        flex-direction: column !important;
+        gap: 1.25rem !important;
+        padding: 1.25rem !important;
+        align-items: center !important;
+    }
+    .fs-divider {
+        display: none !important;
+    }
+    .fs-item {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* ── ABOUT IMAGE RESPONSIVE OVERRIDES ── */
+@media (max-width: 1024px) {
+    .about-grid {
+        align-items: center !important;
+    }
+    .about-right {
+        display: block !important;
+    }
+    .img-wrap {
+        height: auto !important;
+        display: block !important;
+    }
+    .about-img {
+        height: auto !important;
+        min-height: 420px !important;
+    }
+}
+
+/* ── PRESS NIGHT RESPONSIVE OVERHAUL (SWIPEABLE SLIDER ON MOBILE) ── */
+@media (max-width: 768px) {
+    .press-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 1.5rem !important;
+        padding: 1.5rem 1rem !important;
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+        /* Hide scrollbar */
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+    .press-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+    .review {
+        flex: 0 0 82% !important; /* Forces cards side-by-side, peeking the next card */
+        width: 82% !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0.2rem !important;
+        transform: none !important; /* Reset heavy rotation on mobile swipe */
+        box-shadow: 6px 6px 0 var(--ink) !important; /* Solid tactile shadow */
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    /* Subtle alternating angles for playfulness that don't block swiping */
+    .review:nth-child(odd) {
+        transform: rotate(-0.5deg) !important;
+    }
+    .review:nth-child(even) {
+        transform: rotate(0.6deg) !important;
+    }
+    .review:hover, .review:active {
+        transform: scale(1.01) rotate(0deg) !important;
+        box-shadow: 8px 8px 0 var(--ink) !important;
+    }
+    /* Swipe Hint under the section header */
+    .press .sec-head::after {
+        content: 'Swipe to read reviews ➔';
+        display: inline-block;
+        font-family: var(--fm);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: var(--yellow-soft);
+        padding: 0.35rem 0.75rem;
+        border: 1.5px solid var(--ink);
+        border-radius: 4px;
+        box-shadow: 2px 2px 0 var(--ink);
+        margin-top: 1rem;
+        animation: swipeHintPulse 2s ease-in-out infinite;
+        width: 100% !important;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+@keyframes swipeHintPulse {
+    0%, 100% { transform: translateX(0); opacity: 0.85; }
+    50% { transform: translateX(4px); opacity: 1; }
+}
